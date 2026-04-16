@@ -19,26 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Destination Data
     const destinationsData = {
-        tropical: {
-            title: "Tropical Escapes",
-            image: "assets/tropical.png",
-            daylife: "Relax on pristine white-sand beaches, enjoy snorkeling in crystal-clear waters, and sip fresh coconuts under the palm trees.",
-            nightlife: "Experience vibrant beach clubs with fire dancers, sunset cruises, and open-air upscale dining under the stars.",
-            apartments: "Luxury overwater bungalows and beachfront exclusive villas equipped with private infinity pools."
+        albania: {
+            title: "Albania",
+            image: "assets/albania.jfif",
+            daylife: "Explore the hidden gems of the Albanian Riviera, from the crystal clear waters of Ksamil to the high mountain passes of Llogara.",
+            nightlife: "Experience the vibrant energy of Tirana's Blloku district or enjoy a beach party under the stars in Saranda.",
+            apartments: "From modern apartments in the heart of Tirana to luxury beachfront villas along the southern coast."
         },
-        arctic: {
-            title: "Arctic Wonders",
-            image: "assets/winter.png",
-            daylife: "Experience dog sledding across frozen tundras, snowmobiling through pine forests, and relaxing in thermal hot springs.",
-            nightlife: "Chase the majestic Northern Lights from the comfort of a glass igloo and enjoy fireside acoustic sessions.",
-            apartments: "Cozy luxury log cabins featuring massive panoramic glass roofs and private saunas."
+        ibiza: {
+            title: "Ibiza",
+            image: "assets/ibiza.jfif",
+            daylife: "Discover secluded calas like Cala Comte, browse the hippy markets of Las Dalias, and enjoy stunning Mediterranean sunsets.",
+            nightlife: "The world's clubbing capital. Dance to legendary DJs at Pacha, Amnesia, or Ushuaïa for an unforgettable night.",
+            apartments: "Ultra-luxury villas with panoramic sea views and stylish fincas nestled in the tranquil countryside."
         },
-        tokyo: {
-            title: "Urban Pulse",
-            image: "assets/tokyo.png",
-            daylife: "Explore ancient temples nestled between skyscrapers, shop in high-end districts, and taste world-class street food.",
-            nightlife: "Dive into glowing neon-lit streets, discover hidden underground speakeasies, and enjoy high-energy karaoke rooms.",
-            apartments: "Ultra-modern sky-high penthouses with smart-home tech, minimalist design, and endless skyline views."
+        barcellona: {
+            title: "Barcellona",
+            image: "assets/barcellona.jfif",
+            daylife: "Wander through the Gothic Quarter, marvel at Gaudí's Sagrada Família, and enjoy tapas at the bustling Boqueria market.",
+            nightlife: "Experience the diverse nightlife from the beach clubs of Barceloneta to the hidden bars of El Born.",
+            apartments: "Modernist penthouses in Eixample and elegant lofts overlooking the Mediterranean."
         },
         desert: {
             title: "Desert Oasis",
