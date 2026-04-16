@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Destination Data
+    const destinationsData = {
         albania: {
             title: "Albania",
             image: "assets/albania.jfif",
