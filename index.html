@@ -42,28 +42,28 @@
             <h2 class="catchy-text">Select your next destination</h2>
             
             <div class="grid-container">
-                <a href="#" class="destination-card item-1">
+                <a href="#" class="destination-card item-1" data-destination="tropical">
                     <img src="assets/tropical.png" alt="Tropical Beach Resort">
                     <div class="card-overlay">
                         <h3>Tropical Escapes</h3>
                     </div>
                 </a>
                 
-                <a href="#" class="destination-card item-2">
+                <a href="#" class="destination-card item-2" data-destination="arctic">
                     <img src="assets/winter.png" alt="Winter Cabin Northern Lights">
                     <div class="card-overlay">
                         <h3>Arctic Wonders</h3>
                     </div>
                 </a>
                 
-                <a href="#" class="destination-card item-3">
+                <a href="#" class="destination-card item-3" data-destination="tokyo">
                     <img src="assets/tokyo.png" alt="Tokyo Neon City">
                     <div class="card-overlay">
                         <h3>Urban Pulse</h3>
                     </div>
                 </a>
                 
-                <a href="#" class="destination-card item-4">
+                <a href="#" class="destination-card item-4" data-destination="desert">
                     <img src="assets/desert.png" alt="Desert Safari">
                     <div class="card-overlay">
                         <h3>Desert Oasis</h3>
@@ -72,6 +72,31 @@
             </div>
         </section>
     </main>
+
+    <!-- Destination Detail Modal Frame -->
+    <div class="modal-overlay" id="destinationModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal" aria-label="Close modal">&times;</button>
+            <div class="modal-hero">
+                <img id="modalImage" src="" alt="Destination">
+                <h2 id="modalTitle" class="modal-title">Title</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>☀️ Daylife</h3>
+                    <p id="modalDaylife">...</p>
+                </div>
+                <div class="modal-section">
+                    <h3>🌙 Nightlife</h3>
+                    <p id="modalNightlife">...</p>
+                </div>
+                <div class="modal-section">
+                    <h3>🏨 Apartments</h3>
+                    <p id="modalApartments">...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
