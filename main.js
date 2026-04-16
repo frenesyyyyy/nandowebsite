@@ -20,30 +20,30 @@ document.addEventListener('DOMContentLoaded', () => {
         albania: {
             title: "Albania",
             image: "assets/albania.jfif",
-            daylife: "Explore the hidden gems of the Albanian Riviera, from the crystal clear waters of Ksamil to the high mountain passes of Llogara.",
-            nightlife: "Experience the vibrant energy of Tirana's Blloku district or enjoy a beach party under the stars in Saranda.",
-            apartments: "From modern apartments in the heart of Tirana to luxury beachfront villas along the southern coast."
+            daylife: "Esplora le gemme nascoste della Riviera Albanese, dalle acque cristalline di Ksamil ai suggestivi passi montani di Llogara.",
+            nightlife: "Vivi l'energia vibrante del distretto Blloku a Tirana o goditi un beach party esclusivo sotto le stelle a Saranda.",
+            apartments: "Dai moderni attici nel cuore di Tirana alle lussuose ville fronte mare lungo la costa ionica."
         },
         malta: {
             title: "Malta",
             image: "assets/malta.jfif",
-            daylife: "Explore the ancient streets of Valletta, dive into the crystal blue waters of Comino's Blue Lagoon, and visit the silent city of Mdina.",
-            nightlife: "Enjoy the bustling nightlife of Paceville, open-air clubbing at Gianpula Village, and sophisticated dining in St. Julian's.",
-            apartments: "Historic townhouses in Valletta and luxury waterfront apartments in Sliema with stunning harbor views."
+            daylife: "Passeggia tra le storiche vie di Valletta, tuffati nel blu della Laguna Blu di Comino e respira il fascino senza tempo di Mdina.",
+            nightlife: "Scatena il divertimento a Paceville, goditi i club open-air del Gianpula Village e cene raffinate a St. Julian's.",
+            apartments: "Eleganti residenze storiche a Valletta e moderni appartamenti di lusso a Sliema con vista mozzafiato sul porto."
         },
         barcellona: {
             title: "Barcellona",
             image: "assets/barcellona.jfif",
-            daylife: "Wander through the Gothic Quarter, marvel at Gaudí's Sagrada Família, and enjoy tapas at the bustling Boqueria market.",
-            nightlife: "Experience the diverse nightlife from the beach clubs of Barceloneta to the hidden bars of El Born.",
-            apartments: "Modernist penthouses in Eixample and elegant lofts overlooking the Mediterranean."
+            daylife: "Perditi nel Barrio Gótico, lasciati incantare dalla Sagrada Família e gusta le migliori tapas al mercato della Boqueria.",
+            nightlife: "Vivi una movida senza fine, dai beach club della Barceloneta ai cocktail bar ricercati del quartiere El Born.",
+            apartments: "Attici modernisti nell'Eixample ed eleganti loft di design con vista sul Mediterraneo."
         },
         ibiza: {
             title: "Ibiza",
             image: "assets/ibiza.jfif",
-            daylife: "Discover secluded calas like Cala Comte, browse the hippy markets of Las Dalias, and enjoy stunning Mediterranean sunsets.",
-            nightlife: "The world's clubbing capital. Dance to legendary DJs at Pacha, Amnesia, or Ushuaïa for an unforgettable night.",
-            apartments: "Ultra-luxury villas with panoramic sea views and stylish fincas nestled in the tranquil countryside."
+            daylife: "Scopri calette spettacolari come Cala Comte, curiosa tra i mercatini hippy e goditi i tramonti più iconici del Mediterraneo.",
+            nightlife: "La capitale mondiale del clubbing. Balla con i DJ set più famosi al Pacha, all'Amnesia o all'Ushuaïa per una notte epica.",
+            apartments: "Ville ultra-lusso con piscina a sfioro e tipiche finche immerse nella natura incontaminata dell'isola."
         }
     };
 
