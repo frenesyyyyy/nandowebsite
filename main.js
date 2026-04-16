@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Destination Data
-    const destinationsData = {
         albania: {
             title: "Albania",
             image: "assets/albania.jfif",
@@ -26,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nightlife: "Experience the vibrant energy of Tirana's Blloku district or enjoy a beach party under the stars in Saranda.",
             apartments: "From modern apartments in the heart of Tirana to luxury beachfront villas along the southern coast."
         },
-        ibiza: {
-            title: "Ibiza",
-            image: "assets/ibiza.jfif",
-            daylife: "Discover secluded calas like Cala Comte, browse the hippy markets of Las Dalias, and enjoy stunning Mediterranean sunsets.",
-            nightlife: "The world's clubbing capital. Dance to legendary DJs at Pacha, Amnesia, or Ushuaïa for an unforgettable night.",
-            apartments: "Ultra-luxury villas with panoramic sea views and stylish fincas nestled in the tranquil countryside."
+        malta: {
+            title: "Malta",
+            image: "assets/malta.jfif",
+            daylife: "Explore the ancient streets of Valletta, dive into the crystal blue waters of Comino's Blue Lagoon, and visit the silent city of Mdina.",
+            nightlife: "Enjoy the bustling nightlife of Paceville, open-air clubbing at Gianpula Village, and sophisticated dining in St. Julian's.",
+            apartments: "Historic townhouses in Valletta and luxury waterfront apartments in Sliema with stunning harbor views."
         },
         barcellona: {
             title: "Barcellona",
@@ -40,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nightlife: "Experience the diverse nightlife from the beach clubs of Barceloneta to the hidden bars of El Born.",
             apartments: "Modernist penthouses in Eixample and elegant lofts overlooking the Mediterranean."
         },
-        desert: {
-            title: "Desert Oasis",
-            image: "assets/desert.png",
-            daylife: "Embark on thrilling dune bashing adventures, camel treks across boundless sands, and sandboarding at golden hour.",
-            nightlife: "Enjoy private Bedouin-style campfires, stargazing under zero light pollution, and traditional belly dance shows.",
-            apartments: "Luxurious glamping tents fully equipped with air conditioning, plush king beds, and open-air baths."
+        ibiza: {
+            title: "Ibiza",
+            image: "assets/ibiza.jfif",
+            daylife: "Discover secluded calas like Cala Comte, browse the hippy markets of Las Dalias, and enjoy stunning Mediterranean sunsets.",
+            nightlife: "The world's clubbing capital. Dance to legendary DJs at Pacha, Amnesia, or Ushuaïa for an unforgettable night.",
+            apartments: "Ultra-luxury villas with panoramic sea views and stylish fincas nestled in the tranquil countryside."
         }
     };
 
