@@ -24,6 +24,18 @@ body {
     min-height: 100vh;
 }
 
+/* Background Video */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -3;
+    filter: blur(12px) brightness(0.45);
+}
+
 /* Background Blobs (Neon Light Effect) */
 .blob {
     position: fixed;
