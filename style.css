@@ -88,10 +88,14 @@ body {
 }
 
 .main-title .highlight {
-    font-style: italic;
-    background: linear-gradient(135deg, #FFD700, #9333EA);
+    font-family: 'Satisfy', cursive;
+    font-size: 1.2em;
+    background: linear-gradient(135deg, #FF00E5, #FFD700, #00D1FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 0, 229, 0.3);
+    display: inline-block;
+    transform: rotate(-3deg);
 }
 
 .subtitle {
@@ -105,17 +109,24 @@ body {
 }
 
 .catchy-text {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
     text-align: center;
-    margin: 1rem 0;
-    font-style: italic;
+    margin: 1.5rem 0;
     color: #fff;
-    background: linear-gradient(to right, #60A5FA, #A78BFA);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite, fadeUp 0.8s ease 0.4s forwards;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
+    filter: drop-shadow(0 0 10px rgba(231, 60, 126, 0.4));
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Grid Layout 1x2x1 */
