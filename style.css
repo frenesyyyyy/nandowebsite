@@ -89,119 +89,68 @@ body {
 }
 
 /* Typography */
-/* VVS Vivi Viaggia Sogna Diamond Layout */
-.vvs-diamond-container {
+/* Typography */
+/* VVS Vivi Viaggia Sogna Stairway Layout */
+.vvs-stairway-container {
     position: relative;
     display: inline-flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 3rem;
+    align-items: flex-start;
+    margin-top: -3rem; /* Move title significantly more up */
+    margin-bottom: 2rem;
     z-index: 1;
-}
-
-.diamond-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 260px;
-    height: 260px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) rotate(45deg);
-    box-shadow: 0 0 40px rgba(0, 209, 255, 0.15), inset 0 0 30px rgba(255, 0, 229, 0.15);
-    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-    backdrop-filter: blur(2px);
-    z-index: -1;
-    pointer-events: none;
-    animation: diamondPulse 4s ease-in-out infinite, fadeUp 1s ease forwards;
-    opacity: 0;
-}
-
-.diamond-frame::before {
-    content: '';
-    position: absolute;
-    top: -5px; left: -5px; right: -5px; bottom: -5px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    transform: rotate(0deg); /* Because it's inside a rotated parent */
-    opacity: 0.5;
 }
 
 .vvs-line {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
     font-weight: 400;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 0.85; /* Tighter vertical line height */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
     animation: fadeUp 0.8s ease forwards;
     opacity: 0;
+    white-space: nowrap;
 }
 
 .vvs-initial {
-    font-size: clamp(3.5rem, 8vw, 5rem);
+    font-size: clamp(4.5rem, 11vw, 7rem);
     font-weight: 900;
     font-style: normal;
     text-transform: uppercase;
     display: inline-block;
     
-    /* Diamond Texture Effect */
-    background: linear-gradient(
-        -45deg, 
-        #ffffff 0%, 
-        #f0f0f0 10%, 
-        #ffffff 20%, 
-        #d1d1d1 30%, 
-        #ffffff 40%, 
-        #e0e0e0 50%, 
-        #ffffff 60%, 
-        #d1d1d1 70%, 
-        #ffffff 80%, 
-        #f0f0f0 90%, 
-        #ffffff 100%
-    );
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-    animation: diamondShine 6s linear infinite;
-    transform: translateY(10px); /* Align properly with smaller italic text */
+    /* Transparent / Almost not visible */
+    color: rgba(255, 255, 255, 0.05); /* Extremely transparent */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2); /* Very thin, delicate outline */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Very subtle glow */
+    transform: translateY(5px);
+    margin-right: -0.05em; /* Pull text slightly closer to initial */
 }
 
-.vvs-line.vvs-top { margin-bottom: 0px; animation-delay: 0.2s; }
-.vvs-line.vvs-mid { margin-bottom: 0px; animation-delay: 0.4s; font-size: clamp(2rem, 5vw, 3rem); }
-.vvs-line.vvs-bot { animation-delay: 0.6s; }
-
-/* Literal Star Sparkles */
-.sparkle {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
-    z-index: 2;
-    opacity: 0;
-    animation: sparkleTwinkle 3s infinite ease-in-out;
+/* Stairway Layout */
+.vvs-line.vvs-top { 
+    margin-left: -30px; /* max left */
+    animation-delay: 0.1s; 
+}
+.vvs-line.vvs-mid { 
+    margin-left: 30px; /* slightly right */
+    animation-delay: 0.3s; 
+}
+.vvs-line.vvs-bot { 
+    margin-left: 90px; /* slightly more right (stairs) */
+    animation-delay: 0.5s; 
 }
 
-.sp-1 { top: 5%; left: 25%; animation-delay: 0s; transform: scale(0.6); }
-.sp-2 { top: 40%; right: 10%; width: 20px; height: 20px; animation-delay: 1.2s; }
-.sp-3 { bottom: 15%; left: 15%; width: 40px; height: 40px; animation-delay: 0.5s; }
-.sp-4 { bottom: 25%; right: 25%; animation-delay: 2s; transform: scale(0.8); }
-
-@keyframes diamondPulse {
-    0%, 100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); border-color: rgba(255, 255, 255, 0.2); }
-    50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.05); border-color: rgba(255, 255, 255, 0.6); box-shadow: 0 0 60px rgba(0, 209, 255, 0.3), inset 0 0 40px rgba(255, 0, 229, 0.3); }
-}
-
-@keyframes sparkleTwinkle {
-    0%, 100% { opacity: 0; transform: scale(0.2) rotate(0deg); }
-    50% { opacity: 0.9; transform: scale(1) rotate(90deg); filter: drop-shadow(0 0 15px white); }
-}
-
-@keyframes diamondShine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
+/* Responsive adjustments for mobile so it doesn't break the screen */
+@media (max-width: 768px) {
+    .vvs-stairway-container {
+        margin-top: -1rem;
+    }
+    .vvs-line.vvs-top { margin-left: 0; }
+    .vvs-line.vvs-mid { margin-left: 20px; }
+    .vvs-line.vvs-bot { margin-left: 40px; }
 }
 
 
