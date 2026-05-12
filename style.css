@@ -577,3 +577,116 @@ body {
         font-size: 1.05rem;
     }
 }
+
+/* Social Footer Styles */
+.social-footer {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    animation: fadeUp 0.8s ease 1s forwards;
+    opacity: 0;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-btn i {
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+/* Instagram Colors */
+.social-btn.instagram::before {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-btn.instagram:hover {
+    box-shadow: 0 0 20px rgba(214, 36, 159, 0.5);
+    border-color: rgba(214, 36, 159, 0.5);
+}
+
+/* TikTok Colors */
+.social-btn.tiktok::before {
+    background: #000;
+}
+.social-btn.tiktok:hover {
+    box-shadow: -3px 3px 0 rgba(255, 0, 80, 0.8), 3px -3px 0 rgba(0, 242, 234, 0.8);
+    border-color: #fff;
+}
+
+/* WhatsApp Colors */
+.social-btn.whatsapp::before {
+    background: #25D366;
+}
+.social-btn.whatsapp:hover {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    border-color: rgba(37, 211, 102, 0.5);
+}
+
+.social-btn:hover {
+    transform: translateY(-8px) scale(1.1);
+}
+
+.social-btn:hover::before {
+    opacity: 1;
+}
+
+.social-btn:hover i {
+    transform: scale(1.2);
+}
+
+.footer-tagline {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .social-footer {
+        margin-top: 2rem;
+        padding: 2rem 0;
+    }
+    .social-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        border-radius: 14px;
+    }
+}
