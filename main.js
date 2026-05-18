@@ -28,12 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="event-header-row">
                         <div class="event-icon-dot"><i class="fa-solid fa-compass"></i></div>
                         <div class="event-details">
-                            <span class="event-tag">Riviera Explorer</span>
+                            <span class="event-tag">Escursioni</span>
                             <h4>Gemme Nascoste</h4>
                         </div>
                     </div>
                     <p class="event-description">Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
-                    <div class="wide-video-preview" data-video-src="assets/albania_day_gemme.mp4" data-title="Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Riviera Explorer">
+                    <div class="wide-video-preview" data-video-src="assets/albania_day_gemme.mp4" data-title="Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Escursioni">
+                        <div class="play-overlay">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Guarda il Video</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-event-divider"></div>
+                    
+                    <h4 class="sub-event-title">Escursione Blue-Eye</h4>
+                    <p class="event-description">Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio "occhio blu" immerso nella natura incontaminata.</p>
+                    <div class="wide-video-preview" data-video-src="assets/albania_day_blue_eye.mp4" data-title="Escursione Blue-Eye" data-desc="Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio 'occhio blu' immerso nella natura incontaminata." data-badge="Escursioni">
                         <div class="play-overlay">
                             <i class="fa-solid fa-circle-play"></i>
                             <span>Guarda il Video</span>
@@ -398,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     eventBadge.textContent = badge;
                     eventBadge.className = "event-badge"; // reset classes
                     
-                    if (badge.includes("Explorer")) {
+                    if (badge.includes("Explorer") || badge.includes("Escursioni")) {
                         eventBadge.classList.add('daylife-badge');
                     } else if (badge.includes("Vibe")) {
                         eventBadge.classList.add('nightlife-badge');
