@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+const initWebsite = () => {
     const menuBtn = document.getElementById('menuBtn');
     const menuPanel = document.getElementById('menuPanel');
 
@@ -515,7 +515,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize GDPR banner dynamically
     initGDPR();
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWebsite);
+} else {
+    initWebsite();
+}
 
 /* ==========================================
    SECURITY AND PROTECTION SUITE
