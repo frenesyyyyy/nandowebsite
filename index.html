@@ -181,7 +181,23 @@
                     <span class="routine-subtitle">L'esperienza quotidiana pensata per te</span>
                 </div>
                 
-                <div class="modal-section" data-section="daylife">
+                <!-- 3 Options selector grid to dynamically explode routines -->
+                <div class="routine-options-grid">
+                    <div class="routine-option-card active" data-target="daylife">
+                        <div class="option-icon pink"><i class="fa-solid fa-sun"></i></div>
+                        <span class="option-label">☀️ Giorno</span>
+                    </div>
+                    <div class="routine-option-card" data-target="nightlife">
+                        <div class="option-icon cyan"><i class="fa-solid fa-moon"></i></div>
+                        <span class="option-label">🌙 Notte</span>
+                    </div>
+                    <div class="routine-option-card" data-target="apartments">
+                        <div class="option-icon purple"><i class="fa-solid fa-house-chimney"></i></div>
+                        <span class="option-label">🏨 Alloggi</span>
+                    </div>
+                </div>
+                
+                <div class="modal-section active" data-section="daylife">
                     <h3>☀️ Giorno</h3>
                     <p id="modalDaylife">...</p>
                     <div class="landscape-placeholder daylife-box" id="daylifePlaceholder">

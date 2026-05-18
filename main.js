@@ -151,6 +151,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalNightlife = document.getElementById('modalNightlife');
     const modalApartments = document.getElementById('modalApartments');
 
+    // Tab elements inside modal
+    const optionCards = document.querySelectorAll('.routine-option-card');
+    const modalSections = document.querySelectorAll('.modal-section');
+
+    const switchSection = (targetSectionKey) => {
+        optionCards.forEach(c => {
+            if (c.getAttribute('data-target') === targetSectionKey) {
+                c.classList.add('active');
+            } else {
+                c.classList.remove('active');
+            }
+        });
+
+        modalSections.forEach(sec => {
+            if (sec.getAttribute('data-section') === targetSectionKey) {
+                sec.classList.add('active');
+            } else {
+                sec.classList.remove('active');
+            }
+        });
+    };
+
+    optionCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const target = card.getAttribute('data-target');
+            switchSection(target);
+        });
+    });
+
     // Sub-Modal Elements
     const eventModal = document.getElementById('eventModal');
     const closeEventModalBtn = document.getElementById('closeEventModal');
@@ -176,6 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalDaylife.innerHTML = data.daylife;
                 modalNightlife.innerHTML = data.nightlife;
                 modalApartments.innerHTML = data.apartments;
+
+                // Reset to Giorno on modal open
+                switchSection('daylife');
 
                 // Dynamically hide/show main daylife placeholder based on whether mini-displays are present
                 const daylifePlaceholder = document.getElementById('daylifePlaceholder');
