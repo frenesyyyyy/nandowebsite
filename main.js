@@ -172,7 +172,39 @@ const initWebsite = () => {
         ibiza: {
             title: "Ibiza",
             image: "assets/ibiza.jfif",
-            daylife: "Scopri calette spettacolari come Cala Comte, curiosa tra i mercatini hippy e goditi i tramonti più iconici del Mediterraneo.",
+            daylife: `<div class="daylife-events-list">
+                <!-- Option 1 -->
+                <div class="daylife-event-item">
+                    <h2 class="fancy-section-title">Esperienze in Barca</h2>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🚢 Formentera Yacht Charter</h4>
+                        <p class="event-description">Naviga verso le spiagge paradisiache e incontaminate di Formentera a bordo di uno yacht privato con pranzo esclusivo servito a bordo.</p>
+                        <div class="wide-video-preview" data-video-src="assets/ibiza_day_yacht.mp4" data-title="🚢 Formentera Yacht Charter" data-desc="Naviga verso le spiagge paradisiache e incontaminate di Formentera a bordo di uno yacht privato con pranzo esclusivo servito a bordo." data-badge="Esperienze in Barca">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Option 2 -->
+                <div class="daylife-event-item">
+                    <h2 class="fancy-section-title">Clubbing di Giorno</h2>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🏖️ O Beach Beach Party</h4>
+                        <p class="event-description">Vivi il pool party diurno più famoso al mondo, tra spettacoli aerei acrobatici, scenografie esotiche e drink a bordo piscina.</p>
+                        <div class="wide-video-preview" data-video-src="assets/ibiza_day_obeach.mp4" data-title="🏖️ O Beach Beach Party" data-desc="Vivi il pool party diurno più famoso al mondo, tra spettacoli aerei acrobatici, scenografie esotiche e drink a bordo piscina." data-badge="Clubbing di Giorno">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`,
             nightlife: "La capitale mondiale del clubbing. Balla con i DJ set più famosi al Pacha, all'Amnesia o all'Ushuaïa per una notte epica.",
             apartments: "Ville ultra-lusso con piscina a sfioro e tipiche finche immerse nella natura incontaminata dell'isola.",
             daylifeEventTitle: "Formentera Luxury Yacht Charter",
@@ -358,6 +390,16 @@ const initWebsite = () => {
                 }
                 updateBookingContactCard();
 
+                // Toggle Ibiza Warning Box
+                const ibizaWarningBox = document.getElementById('ibizaWarningBox');
+                if (ibizaWarningBox) {
+                    if (destKey === 'ibiza') {
+                        ibizaWarningBox.style.display = 'block';
+                    } else {
+                        ibizaWarningBox.style.display = 'none';
+                    }
+                }
+
                 modal.classList.add('active');
             }
         });
@@ -366,6 +408,8 @@ const initWebsite = () => {
     // Close Modal logic
     const closeModalFunc = () => {
         if (modal) modal.classList.remove('active');
+        const ibizaWarningBox = document.getElementById('ibizaWarningBox');
+        if (ibizaWarningBox) ibizaWarningBox.style.display = 'none';
         activeDestKey = null;
         closeSubModal();
     };
