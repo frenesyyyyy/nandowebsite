@@ -136,8 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
             apartmentsEventTitle: "Es Vedrà Majestic Cliff Villa",
             apartmentsEventDesc: "Una magnifica villa moderna incastonata nella roccia proprio di fronte al celebre e mistico isolotto di Es Vedrà, dotata di piscina a sfioro riscaldata, braciere esterno ed eleganti salotti lounge.",
             apartmentsVideo: "assets/ibiza_apartments.mp4"
-        }
     };
+
+    // Temporary override all video sources with the YouTube Shorts link
+    const tempYtShort = "https://youtube.com/shorts/VJtgazb2O-w?is=6bz02Aa0pKLxKGuq";
+    Object.keys(destinationsData).forEach(key => {
+        const dest = destinationsData[key];
+        dest.daylifeVideo = tempYtShort;
+        dest.nightlifeVideo = tempYtShort;
+        dest.apartmentsVideo = tempYtShort;
+        
+        // Also override data-video-src inside dynamic daylife HTML template strings
+        if (dest.daylife && typeof dest.daylife === 'string') {
+            dest.daylife = dest.daylife.replace(/data-video-src="[^"]*"/g, `data-video-src="${tempYtShort}"`);
+        }
+    });
 
     // DOM Elements
     const modal = document.getElementById('destinationModal');
@@ -181,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventModal = document.getElementById('eventModal');
     const closeEventModalBtn = document.getElementById('closeEventModal');
     const eventVideo = document.getElementById('eventVideo');
+    const eventIframe = document.getElementById('eventIframe');
     const eventBadge = document.getElementById('eventBadge');
     const eventTitle = document.getElementById('eventTitle');
     const eventDescription = document.getElementById('eventDescription');
@@ -244,6 +258,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Helper function to extract YouTube ID (including Shorts and share links)
+    const getYouTubeId = (url) => {
+        if (!url) return null;
+        const shortsMatch = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/);
+        if (shortsMatch) return shortsMatch[1];
+        const watchMatch = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+        if (watchMatch) return watchMatch[1];
+        const shareMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+        if (shareMatch) return shareMatch[1];
+        return null;
+    };
+
+    // Unified player that handles both local mp4 and YouTube streaming elegantly
+    const loadAndPlayVideo = (videoSrc) => {
+        const ytId = getYouTubeId(videoSrc);
+        
+        if (ytId) {
+            // Hide local video, display YouTube iframe
+            eventVideo.style.display = 'none';
+            eventVideo.pause();
+            eventVideo.src = "";
+            
+            eventIframe.style.display = 'block';
+            eventIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+        } else {
+            // Hide YouTube iframe, display local video player
+            eventIframe.style.display = 'none';
+            eventIframe.src = "";
+            
+            eventVideo.style.display = 'block';
+            const fallbackVideo = "assets/bg-video.mp4";
+            eventVideo.src = videoSrc || fallbackVideo;
+            eventVideo.load();
+            eventVideo.play().catch(err => {
+                console.log("Local video blocked, running fallback...", err);
+                eventVideo.src = fallbackVideo;
+                eventVideo.load();
+                eventVideo.play().catch(e => console.log("Fallback failed:", e));
+            });
+        }
+    };
+
     // Sub-Modal logic for clicking placeholders
     const openSubModal = (type) => {
         if (!activeDestKey) return;
@@ -267,30 +323,19 @@ document.addEventListener('DOMContentLoaded', () => {
             eventBadge.classList.add('apartments-badge');
         }
 
-        // Set video source (fallback to existing bg-video if specific video isn't loaded yet)
-        const videoSrc = data[type + 'Video'];
-        const fallbackVideo = "assets/bg-video.mp4"; // Known working video
-        
-        // To prevent network errors, try loading the video path, fall back gracefully
-        eventVideo.src = videoSrc || fallbackVideo;
-        eventVideo.load();
-        
-        // Activate overlay
+        // Activate overlay first to layout iframe/video elements correctly
         eventModal.classList.add('active');
 
-        // Play the video (mobile friendly because it's in a click chain)
-        eventVideo.play().catch(err => {
-            console.log("Auto-play blocked or video missing, falling back to bg-video...", err);
-            eventVideo.src = fallbackVideo;
-            eventVideo.load();
-            eventVideo.play().catch(e => console.log("Play failed: ", e));
-        });
+        // Dynamically load the appropriate stream
+        const videoSrc = data[type + 'Video'];
+        loadAndPlayVideo(videoSrc);
     };
 
     const closeSubModal = () => {
         eventModal.classList.remove('active');
         eventVideo.pause();
         eventVideo.src = ""; // Clear video stream
+        if (eventIframe) eventIframe.src = ""; // Clear iframe stream
     };
 
     // Add click listeners to landscape placeholders if they exist
@@ -345,17 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     eventBadge.classList.add('apartments-badge');
                 }
                 
-                const fallbackVideo = "assets/bg-video.mp4";
-                eventVideo.src = videoSrc || fallbackVideo;
-                eventVideo.load();
-                
                 eventModal.classList.add('active');
-                eventVideo.play().catch(err => {
-                    console.log("Play failed, trying fallback...", err);
-                    eventVideo.src = fallbackVideo;
-                    eventVideo.load();
-                    eventVideo.play().catch(e => console.log("Fallback failed:", e));
-                });
+                loadAndPlayVideo(videoSrc);
             }
         }
     });
