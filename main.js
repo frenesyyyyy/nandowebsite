@@ -439,4 +439,151 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Initialize GDPR banner dynamically
+    initGDPR();
 });
+
+/* ==========================================
+   SECURITY AND PROTECTION SUITE
+   ========================================== */
+
+// 1. Disable Context Right-Click
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+}, false);
+
+// 2. Disable Keyboard Shortcuts (F12, Inspect, View Source)
+document.addEventListener('keydown', (e) => {
+    if (
+        e.keyCode === 123 || // F12 Key
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
+        (e.ctrlKey && e.keyCode === 85) // Ctrl+U (View Source)
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// 3. Prevent dragging of images and videos to protect media assets
+document.addEventListener('dragstart', (e) => {
+    if (e.target.nodeName === 'IMG' || e.target.nodeName === 'VIDEO') {
+        e.preventDefault();
+    }
+});
+
+// 4. DevTools Detection & Source Protection Loop
+setInterval(() => {
+    (function() {
+        const before = new Date().getTime();
+        debugger;
+        const after = new Date().getTime();
+        if (after - before > 100) {
+            document.body.innerHTML = `
+                <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:#060611; color:#ffffff; font-family:'Outfit', sans-serif; text-align:center; padding:30px; box-sizing:border-box;">
+                    <div style="font-size:3rem; margin-bottom:20px; background:linear-gradient(135deg, #a855f7, #ff00e5); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">🔒</div>
+                    <h2 style="font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; font-size:1.5rem;">Accesso Protetto</h2>
+                    <p style="color:rgba(255,255,255,0.6); max-width:400px; font-size:0.9rem; line-height:1.5; font-weight:300;">La visualizzazione del codice sorgente e gli strumenti di ispezione dello sviluppatore sono disabilitati per tutelare i diritti d'autore e i contenuti multimediali protetti.</p>
+                </div>
+            `;
+        }
+    })();
+}, 1000);
+
+/* ==========================================
+   GDPR COOKIE CONSENT ENGINE
+   ========================================== */
+function initGDPR() {
+    // If user already made a choice, don't show the banner
+    if (localStorage.getItem('gdpr_accepted')) return;
+
+    // Create the banner container element
+    const banner = document.createElement('div');
+    banner.id = 'gdpr-cookie-banner';
+    banner.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        width: 90%;
+        max-width: 500px;
+        background: rgba(10, 8, 22, 0.85);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-family: 'Outfit', sans-serif;
+        color: #ffffff;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        opacity: 0;
+    `;
+
+    banner.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+            <div style="font-size:1.5rem; background:linear-gradient(135deg, #c084fc, #ff00e5); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.2;">🍪</div>
+            <div style="flex:1;">
+                <h4 style="margin:0 0 4px 0; font-size:0.95rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#ffffff;">Informativa sui Cookie</h4>
+                <p style="margin:0; font-size:0.8rem; line-height:1.5; color:rgba(255, 255, 255, 0.65); font-weight:300;">
+                    Questo sito utilizza esclusivamente cookie tecnici essenziali per abilitare l'esperienza visiva dei video e le animazioni. Non effettuiamo profilazione, non gestiamo pagamenti né account utente.
+                </p>
+            </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:5px;">
+            <button id="gdpr-decline" style="background:transparent; border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.8); padding:8px 16px; border-radius:10px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Outfit',sans-serif;">Rifiuta</button>
+            <button id="gdpr-accept" style="background:linear-gradient(135deg, #a855f7, #ff00e5); border:none; color:#ffffff; padding:8px 20px; border-radius:10px; font-size:0.8rem; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(168, 85, 247, 0.3); transition:all 0.2s; font-family:'Outfit',sans-serif;">Accetta</button>
+        </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    // Trigger elegant slide-up entrance
+    setTimeout(() => {
+        banner.style.transform = 'translateX(-50%) translateY(0)';
+        banner.style.opacity = '1';
+    }, 1000);
+
+    // Buttons actions Setup
+    const acceptBtn = banner.querySelector('#gdpr-accept');
+    const declineBtn = banner.querySelector('#gdpr-decline');
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('gdpr_accepted', 'true');
+            hideBanner(banner);
+        });
+        acceptBtn.addEventListener('mouseenter', () => {
+            acceptBtn.style.transform = 'scale(1.03)';
+            acceptBtn.style.boxShadow = '0 6px 16px rgba(168, 85, 247, 0.5)';
+        });
+        acceptBtn.addEventListener('mouseleave', () => {
+            acceptBtn.style.transform = 'scale(1)';
+            acceptBtn.style.boxShadow = '0 4px 12px rgba(168, 85, 247, 0.3)';
+        });
+    }
+
+    if (declineBtn) {
+        declineBtn.addEventListener('click', () => {
+            localStorage.setItem('gdpr_accepted', 'declined');
+            hideBanner(banner);
+        });
+        declineBtn.addEventListener('mouseenter', () => {
+            declineBtn.style.background = 'rgba(255,255,255,0.05)';
+        });
+        declineBtn.addEventListener('mouseleave', () => {
+            declineBtn.style.background = 'transparent';
+        });
+    }
+}
+
+function hideBanner(banner) {
+    banner.style.transform = 'translateX(-50%) translateY(100px)';
+    banner.style.opacity = '0';
+    setTimeout(() => banner.remove(), 600);
+}
+
