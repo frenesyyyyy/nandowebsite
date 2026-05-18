@@ -1740,102 +1740,99 @@ body {
     }
 }
 
-/* Luxury Mini Video Display Card Styles */
-.mini-video-display {
-    width: 86px;
-    height: 58px;
-    border-radius: 12px;
+/* Lightweight & Elegant Video Play Indicators */
+.daylife-event-item {
+    cursor: pointer;
+}
+
+/* Position relative for absolute centering of play overlay icon */
+.event-icon-dot {
     position: relative;
     overflow: hidden;
-    flex-shrink: 0;
-    cursor: pointer;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Category specific thumbnails (slightly offset / less blurred) */
-.gemme-video {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
-}
-
-.beach-video {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
-}
-
-.boat-video {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
-}
-
-.mini-video-display::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 0, 229, 0.1), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-}
-
-.mini-video-display i {
-    color: #fff;
-    font-size: 0.85rem;
-    z-index: 3;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    background: rgba(0, 0, 0, 0.45);
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-}
-
-/* Hover effects */
-.mini-video-display:hover {
-    transform: scale(1.08) translateY(-1px);
-    border-color: rgba(255, 0, 229, 0.6);
-    box-shadow: 0 8px 18px rgba(255, 0, 229, 0.3);
-}
-
-.mini-video-display:hover::before {
+.event-icon-dot .main-icon {
     opacity: 1;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.mini-video-display:hover i {
-    transform: scale(1.15);
+.event-icon-dot .hover-play-icon {
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    top: 50%;
+    left: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+/* Hover morphing for left-side circle icon */
+.daylife-event-item:hover .event-icon-dot {
+    background: linear-gradient(135deg, #FF00E5, #00d1ff);
+    border-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 209, 255, 0.6);
+}
+
+.daylife-event-item:hover .event-icon-dot .main-icon {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.daylife-event-item:hover .event-icon-dot .hover-play-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    color: #fff;
+}
+
+/* Tiny elegant play badge next to tag */
+.video-play-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    margin-left: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.65);
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+.video-play-indicator i {
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Hover state for tag play pill */
+.daylife-event-item:hover .video-play-indicator {
+    background: rgba(0, 209, 255, 0.12);
+    border-color: rgba(0, 209, 255, 0.4);
     color: #00d1ff;
-    border-color: #00d1ff;
-    text-shadow: 0 0 12px rgba(0, 209, 255, 0.8);
-    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgba(0, 209, 255, 0.2);
 }
 
+.daylife-event-item:hover .video-play-indicator i {
+    color: #00d1ff;
+    transform: scale(1.1);
+}
+
+/* Mobile responsive padding and adjustments */
 @media (max-width: 768px) {
-    .mini-video-display {
-        width: 70px;
-        height: 48px;
-        border-radius: 10px;
-    }
-    
-    .mini-video-display i {
-        font-size: 0.72rem;
-        width: 22px;
-        height: 22px;
+    .video-play-indicator {
+        margin-left: 6px;
+        padding: 1px 5px;
+        font-size: 0.58rem;
     }
 }
+
 
 

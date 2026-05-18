@@ -23,40 +23,37 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Saranda & Ksamil",
             image: "assets/albania.jfif",
             daylife: `<div class="daylife-events-list">
-                <div class="daylife-event-item">
-                    <div class="event-icon-dot pink"><i class="fa-solid fa-compass"></i></div>
+                <div class="daylife-event-item" data-video-src="assets/albania_day_gemme.mp4" data-title="Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Riviera Explorer">
+                    <div class="event-icon-dot pink">
+                        <i class="fa-solid fa-compass main-icon"></i>
+                        <i class="fa-solid fa-play hover-play-icon"></i>
+                    </div>
                     <div class="event-details">
-                        <span class="event-tag">Riviera Explorer</span>
+                        <span class="event-tag">Riviera Explorer <span class="video-play-indicator"><i class="fa-solid fa-play"></i> Video</span></span>
                         <h4>Gemme Nascoste</h4>
                         <p>Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
                     </div>
-                    <div class="mini-video-display gemme-video" data-video-src="assets/albania_day_gemme.mp4" data-title="Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Riviera Explorer">
-                        <div class="mini-play-glow"></div>
-                        <i class="fa-solid fa-play"></i>
-                    </div>
                 </div>
-                <div class="daylife-event-item">
-                    <div class="event-icon-dot cyan"><i class="fa-solid fa-umbrella-beach"></i></div>
+                <div class="daylife-event-item" data-video-src="assets/albania_day_beach.mp4" data-title="Beach Party Esclusivo" data-desc="Balla sotto il sole e rilassati sui lettini VIP del beach club più esclusivo della Riviera." data-badge="VIP Vibe">
+                    <div class="event-icon-dot cyan">
+                        <i class="fa-solid fa-umbrella-beach main-icon"></i>
+                        <i class="fa-solid fa-play hover-play-icon"></i>
+                    </div>
                     <div class="event-details">
-                        <span class="event-tag">VIP Vibe</span>
+                        <span class="event-tag">VIP Vibe <span class="video-play-indicator"><i class="fa-solid fa-play"></i> Video</span></span>
                         <h4>Beach Party Esclusivo</h4>
                         <p>Accedi ai club sulla spiaggia più ricercati di Ksamil, tra lettini VIP riservati e drink firmati a bordo mare.</p>
                     </div>
-                    <div class="mini-video-display beach-video" data-video-src="assets/albania_day_beach.mp4" data-title="Beach Party Esclusivo" data-desc="Balla sotto il sole e rilassati sui lettini VIP del beach club più esclusivo della Riviera." data-badge="VIP Vibe">
-                        <div class="mini-play-glow"></div>
-                        <i class="fa-solid fa-play"></i>
-                    </div>
                 </div>
-                <div class="daylife-event-item">
-                    <div class="event-icon-dot purple"><i class="fa-solid fa-ship"></i></div>
+                <div class="daylife-event-item" data-video-src="assets/albania_day_boat.mp4" data-title="Epic Boat Party" data-desc="Vivi l'adrenalina di un party in barca privato navigando le acque turchesi del mar Ionio." data-badge="Sunset Club">
+                    <div class="event-icon-dot purple">
+                        <i class="fa-solid fa-ship main-icon"></i>
+                        <i class="fa-solid fa-play hover-play-icon"></i>
+                    </div>
                     <div class="event-details">
-                        <span class="event-tag">Sunset Club</span>
+                        <span class="event-tag">Sunset Club <span class="video-play-indicator"><i class="fa-solid fa-play"></i> Video</span></span>
                         <h4>Epic Boat Party</h4>
                         <p>Sali a bordo per un party in barca privato ed elettrizzante al tramonto, cullato da onde di cristallo e dj-set d'élite.</p>
-                    </div>
-                    <div class="mini-video-display boat-video" data-video-src="assets/albania_day_boat.mp4" data-title="Epic Boat Party" data-desc="Vivi l'adrenalina di un party in barca privato navigando le acque turchesi del mar Ionio." data-badge="Sunset Club">
-                        <div class="mini-play-glow"></div>
-                        <i class="fa-solid fa-play"></i>
                     </div>
                 </div>
             </div>`,
@@ -160,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Dynamically hide/show main daylife placeholder based on whether mini-displays are present
                 const daylifePlaceholder = document.getElementById('daylifePlaceholder');
                 if (daylifePlaceholder) {
-                    if (data.daylife && data.daylife.includes('mini-video-display')) {
+                    if (data.daylife && data.daylife.includes('video-play-indicator')) {
                         daylifePlaceholder.style.display = 'none';
                     } else {
                         daylifePlaceholder.style.display = 'flex';
@@ -263,43 +260,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Global delegation listener for dynamically rendered event mini video displays
+    // Global delegation listener for dynamically rendered event cards
     document.addEventListener('click', (e) => {
-        const miniDisplay = e.target.closest('.mini-video-display');
-        if (miniDisplay) {
-            e.stopPropagation();
-            
-            const videoSrc = miniDisplay.getAttribute('data-video-src');
-            const title = miniDisplay.getAttribute('data-title');
-            const desc = miniDisplay.getAttribute('data-desc');
-            const badge = miniDisplay.getAttribute('data-badge');
-            
-            if (eventTitle && eventDescription && eventBadge && eventVideo && eventModal) {
-                // Populate dynamic content
-                eventTitle.textContent = title;
-                eventDescription.textContent = desc;
-                eventBadge.textContent = badge;
-                eventBadge.className = "event-badge"; // reset classes
+        const eventItem = e.target.closest('.daylife-event-item');
+        if (eventItem) {
+            const videoSrc = eventItem.getAttribute('data-video-src');
+            // If the item has a video-src attribute, open it
+            if (videoSrc) {
+                e.stopPropagation();
                 
-                if (badge.includes("Explorer")) {
-                    eventBadge.classList.add('daylife-badge');
-                } else if (badge.includes("Vibe")) {
-                    eventBadge.classList.add('nightlife-badge');
-                } else if (badge.includes("Club")) {
-                    eventBadge.classList.add('apartments-badge');
-                }
+                const title = eventItem.getAttribute('data-title');
+                const desc = eventItem.getAttribute('data-desc');
+                const badge = eventItem.getAttribute('data-badge');
                 
-                const fallbackVideo = "assets/bg-video.mp4";
-                eventVideo.src = videoSrc || fallbackVideo;
-                eventVideo.load();
-                
-                eventModal.classList.add('active');
-                eventVideo.play().catch(err => {
-                    console.log("Play failed, trying fallback...", err);
-                    eventVideo.src = fallbackVideo;
+                if (eventTitle && eventDescription && eventBadge && eventVideo && eventModal) {
+                    // Populate dynamic content
+                    eventTitle.textContent = title;
+                    eventDescription.textContent = desc;
+                    eventBadge.textContent = badge;
+                    eventBadge.className = "event-badge"; // reset classes
+                    
+                    if (badge.includes("Explorer")) {
+                        eventBadge.classList.add('daylife-badge');
+                    } else if (badge.includes("Vibe")) {
+                        eventBadge.classList.add('nightlife-badge');
+                    } else if (badge.includes("Club")) {
+                        eventBadge.classList.add('apartments-badge');
+                    }
+                    
+                    const fallbackVideo = "assets/bg-video.mp4";
+                    eventVideo.src = videoSrc || fallbackVideo;
                     eventVideo.load();
-                    eventVideo.play().catch(e => console.log("Fallback failed:", e));
-                });
+                    
+                    eventModal.classList.add('active');
+                    eventVideo.play().catch(err => {
+                        console.log("Play failed, trying fallback...", err);
+                        eventVideo.src = fallbackVideo;
+                        eventVideo.load();
+                        eventVideo.play().catch(e => console.log("Fallback failed:", e));
+                    });
+                }
             }
         }
     });
