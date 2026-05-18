@@ -183,7 +183,7 @@ body {
     position: absolute;
     width: clamp(100px, 15vw, 150px);
     height: auto;
-    right: -130px;
+    right: -180px; /* Moved further to the right */
     bottom: -60px;
     transform: rotate(-10deg); /* Leaning left a little */
     z-index: 10;
@@ -200,20 +200,18 @@ body {
 
 @media (max-width: 768px) {
     .brand-funaway-logo {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: 1.2rem;
-        margin-bottom: -1rem;
-        width: 100px;
-        transform: rotate(-6deg);
+        position: absolute; /* Keep absolute so it never shifts any other elements */
+        right: -80px; /* Positioned nicely to the right on mobile */
+        bottom: -35px;
+        width: 85px;
+        transform: rotate(-8deg);
         display: block;
         animation: fadeUp 0.8s ease forwards;
         opacity: 0;
     }
     
     .brand-funaway-logo:hover {
-        transform: rotate(-10deg) scale(1.05);
+        transform: rotate(-12deg) scale(1.05);
     }
 }
 
