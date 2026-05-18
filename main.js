@@ -25,35 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             daylife: `<div class="daylife-events-list">
                 <!-- Option 1 -->
                 <div class="daylife-event-item">
-                    <h2 class="fancy-section-title">Escursioni</h2>
-                    
-                    <div class="sub-event-block" style="width: 100%;">
-                        <h4 class="sub-event-title">🚢 Gemme Nascoste</h4>
-                        <p class="event-description">Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
-                        <div class="wide-video-preview" data-video-src="assets/albania_day_gemme.mp4" data-title="🚢 Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Escursioni">
-                            <div class="play-overlay">
-                                <i class="fa-solid fa-circle-play"></i>
-                                <span>Guarda il Video</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="sub-event-divider"></div>
-                    
-                    <div class="sub-event-block" style="width: 100%;">
-                        <h4 class="sub-event-title">🌊 Escursione Blue-Eye</h4>
-                        <p class="event-description">Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio "occhio blu" immerso nella natura incontaminata.</p>
-                        <div class="wide-video-preview" data-video-src="assets/albania_day_blue_eye.mp4" data-title="🌊 Escursione Blue-Eye" data-desc="Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio 'occhio blu' immerso nella natura incontaminata." data-badge="Escursioni">
-                            <div class="play-overlay">
-                                <i class="fa-solid fa-circle-play"></i>
-                                <span>Guarda il Video</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Option 2 -->
-                <div class="daylife-event-item">
                     <h2 class="fancy-section-title">Feste in Spiaggia</h2>
                     
                     <div class="sub-event-block" style="width: 100%;">
@@ -73,6 +44,35 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 class="sub-event-title">🌴 African Beach Club</h4>
                         <p class="event-description">Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto.</p>
                         <div class="wide-video-preview" data-video-src="assets/albania_day_african.mp4" data-title="🌴 African Beach Club" data-desc="Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto." data-badge="Feste in Spiaggia">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Option 2 -->
+                <div class="daylife-event-item">
+                    <h2 class="fancy-section-title">Escursioni</h2>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🚢 Gemme Nascoste</h4>
+                        <p class="event-description">Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_gemme.mp4" data-title="🚢 Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Escursioni">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-event-divider"></div>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🌊 Escursione Blue-Eye</h4>
+                        <p class="event-description">Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio "occhio blu" immerso nella natura incontaminata.</p>
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_blue_eye.mp4" data-title="🌊 Escursione Blue-Eye" data-desc="Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio 'occhio blu' immerso nella natura incontaminata." data-badge="Escursioni">
                             <div class="play-overlay">
                                 <i class="fa-solid fa-circle-play"></i>
                                 <span>Guarda il Video</span>
