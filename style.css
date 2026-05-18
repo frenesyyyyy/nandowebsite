@@ -2032,6 +2032,399 @@ body {
     }
 }
 
+/* Contacts Page Premium Layout styling */
+.contacts-hero {
+    margin: 5rem 0 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    animation: fadeDown 0.8s ease;
+}
+
+.contacts-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.owner-name {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.8rem;
+    color: #FF00E5;
+    text-transform: none;
+    text-shadow: 0 0 10px rgba(255, 0, 229, 0.4);
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.contacts-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.profile-glass-card {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.05);
+    padding: 2.2rem;
+    box-sizing: border-box;
+    animation: scaleInExplode 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+.profile-header-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar-container {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    position: relative;
+    padding: 3px;
+    background: linear-gradient(135deg, #FF00E5, #00D1FF);
+    box-shadow: 0 5px 20px rgba(255, 0, 229, 0.3);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #060611;
+}
+
+.profile-online-dot {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #25d366;
+    border: 3px solid #060611;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #25d366;
+    animation: dotPulse 2s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+    0% { transform: scale(1); box-shadow: 0 0 5px #25d366; }
+    50% { transform: scale(1.15); box-shadow: 0 0 15px #25d366, 0 0 25px rgba(37, 211, 102, 0.4); }
+    100% { transform: scale(1); box-shadow: 0 0 5px #25d366; }
+}
+
+.profile-meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-owner-title {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.wa-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(37, 211, 102, 0.08);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.wa-status-badge i {
+    color: #25d366;
+    font-size: 0.5rem;
+    animation: dotPulse 2s infinite ease-in-out;
+}
+
+.wa-status-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #25d366;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-bubble-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.status-bubble-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.status-message-bubble {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 1.2rem;
+    position: relative;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.02);
+}
+
+.status-message-bubble p {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 8px 0;
+}
+
+.status-updated {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.profile-card-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    margin-bottom: 2rem;
+}
+
+.contacts-action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+
+.contact-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+.btn-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.4s ease;
+    color: rgba(255,255,255,0.85);
+}
+
+.btn-text-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.btn-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-subtext {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.btn-chevron {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+}
+
+/* Hover effects with modern neon glass highlights */
+.contact-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.wa-direct-btn:hover {
+    border-color: rgba(37, 211, 102, 0.4);
+    background: rgba(37, 211, 102, 0.03);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.15);
+}
+.wa-direct-btn:hover .btn-icon-wrap {
+    background: #25d366;
+    color: #060611;
+    border-color: #25d366;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+.wa-direct-btn:hover .btn-chevron {
+    color: #25d366;
+    transform: translateX(3px);
+}
+
+.instagram-direct-btn:hover {
+    border-color: rgba(255, 0, 229, 0.4);
+    background: rgba(255, 0, 229, 0.03);
+    box-shadow: 0 8px 25px rgba(255, 0, 229, 0.15);
+}
+.instagram-direct-btn:hover .btn-icon-wrap {
+    background: linear-gradient(135deg, #FF00E5, #ee7752);
+    color: #fff;
+    border-color: #FF00E5;
+    box-shadow: 0 0 15px rgba(255, 0, 229, 0.4);
+}
+.instagram-direct-btn:hover .btn-chevron {
+    color: #FF00E5;
+    transform: translateX(3px);
+}
+
+.email-direct-btn:hover {
+    border-color: rgba(0, 209, 255, 0.4);
+    background: rgba(0, 209, 255, 0.03);
+    box-shadow: 0 8px 25px rgba(0, 209, 255, 0.15);
+}
+.email-direct-btn:hover .btn-icon-wrap {
+    background: #00D1FF;
+    color: #060611;
+    border-color: #00D1FF;
+    box-shadow: 0 0 15px rgba(0, 209, 255, 0.4);
+}
+.email-direct-btn:hover .btn-chevron {
+    color: #00D1FF;
+    transform: translateX(3px);
+}
+
+.hours-container {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.hours-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hours-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.contacts-footer {
+    margin: 3rem 0 2rem;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* Responsive fixes for contacts page */
+@media (max-width: 576px) {
+    .profile-glass-card {
+        padding: 1.5rem 1.2rem;
+        border-radius: 20px;
+    }
+    
+    .profile-avatar-container {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .profile-owner-title {
+        font-size: 1.8rem;
+    }
+    
+    .wa-status-badge {
+        padding: 3px 8px;
+    }
+    
+    .wa-status-badge span {
+        font-size: 0.65rem;
+    }
+    
+    .contact-action-btn {
+        padding: 0.8rem;
+        gap: 10px;
+    }
+    
+    .btn-icon-wrap {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .btn-label {
+        font-size: 0.88rem;
+    }
+    
+    .btn-subtext {
+        font-size: 0.7rem;
+    }
+    
+    .hours-row {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}
+
 
 
 
