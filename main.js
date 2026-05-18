@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="sub-event-divider"></div>
                     
                     <div class="sub-event-block" style="width: 100%;">
-                        <h4 class="sub-event-title">🛥️ Escursione Blue-Eye</h4>
+                        <h4 class="sub-event-title">🌊 Escursione Blue-Eye</h4>
                         <p class="event-description">Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio "occhio blu" immerso nella natura incontaminata.</p>
-                        <div class="wide-video-preview" data-video-src="assets/albania_day_blue_eye.mp4" data-title="🛥️ Escursione Blue-Eye" data-desc="Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio 'occhio blu' immerso nella natura incontaminata." data-badge="Escursioni">
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_blue_eye.mp4" data-title="🌊 Escursione Blue-Eye" data-desc="Vivi l'incanto di Syri i Kaltër, una sorgente carsica sotterranea dai colori incredibili, un vero e proprio 'occhio blu' immerso nella natura incontaminata." data-badge="Escursioni">
                             <div class="play-overlay">
                                 <i class="fa-solid fa-circle-play"></i>
                                 <span>Guarda il Video</span>
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 class="fancy-section-title">Feste in Spiaggia</h2>
                     
                     <div class="sub-event-block" style="width: 100%;">
-                        <h4 class="sub-event-title">🌴 Mulino Beach Club</h4>
+                        <h4 class="sub-event-title">🏖️ Mulino Beach Club</h4>
                         <p class="event-description">Accedi al club sulla spiaggia più ricercato di Ksamil, tra lettini VIP riservati e drink esclusivi a bordo mare.</p>
-                        <div class="wide-video-preview" data-video-src="assets/albania_day_mulino.mp4" data-title="🌴 Mulino Beach Club" data-desc="Accedi al club sulla spiaggia più ricercato di Ksamil, tra lettini VIP riservati e drink esclusivi a bordo mare." data-badge="Feste in Spiaggia">
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_mulino.mp4" data-title="🏖️ Mulino Beach Club" data-desc="Accedi al club sulla spiaggia più ricercato di Ksamil, tra lettini VIP riservati e drink esclusivi a bordo mare." data-badge="Feste in Spiaggia">
                             <div class="play-overlay">
                                 <i class="fa-solid fa-circle-play"></i>
                                 <span>Guarda il Video</span>
@@ -70,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="sub-event-divider"></div>
                     
                     <div class="sub-event-block" style="width: 100%;">
-                        <h4 class="sub-event-title">🗿 African Beach Club</h4>
+                        <h4 class="sub-event-title">🌴 African Beach Club</h4>
                         <p class="event-description">Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto.</p>
-                        <div class="wide-video-preview" data-video-src="assets/albania_day_african.mp4" data-title="🗿 African Beach Club" data-desc="Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto." data-badge="Feste in Spiaggia">
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_african.mp4" data-title="🌴 African Beach Club" data-desc="Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto." data-badge="Feste in Spiaggia">
                             <div class="play-overlay">
                                 <i class="fa-solid fa-circle-play"></i>
                                 <span>Guarda il Video</span>
