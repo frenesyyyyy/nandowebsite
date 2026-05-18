@@ -190,36 +190,50 @@ document.addEventListener('DOMContentLoaded', () => {
         eventVideo.src = ""; // Clear video stream
     };
 
-    // Add click listeners to landscape placeholders
-    document.getElementById('daylifePlaceholder').addEventListener('click', (e) => {
-        e.stopPropagation();
-        openSubModal('daylife');
-    });
+    // Add click listeners to landscape placeholders if they exist
+    const daylifePlaceholder = document.getElementById('daylifePlaceholder');
+    const nightlifePlaceholder = document.getElementById('nightlifePlaceholder');
+    const apartmentsPlaceholder = document.getElementById('apartmentsPlaceholder');
 
-    document.getElementById('nightlifePlaceholder').addEventListener('click', (e) => {
-        e.stopPropagation();
-        openSubModal('nightlife');
-    });
+    if (daylifePlaceholder) {
+        daylifePlaceholder.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openSubModal('daylife');
+        });
+    }
 
-    document.getElementById('apartmentsPlaceholder').addEventListener('click', (e) => {
-        e.stopPropagation();
-        openSubModal('apartments');
-    });
+    if (nightlifePlaceholder) {
+        nightlifePlaceholder.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openSubModal('nightlife');
+        });
+    }
+
+    if (apartmentsPlaceholder) {
+        apartmentsPlaceholder.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openSubModal('apartments');
+        });
+    }
 
     // Close Sub-Modal listeners
-    closeEventModalBtn.addEventListener('click', closeSubModal);
-    eventModal.addEventListener('click', (e) => {
-        if (e.target === eventModal) {
-            closeSubModal();
-        }
-    });
+    if (closeEventModalBtn) {
+        closeEventModalBtn.addEventListener('click', closeSubModal);
+    }
+    if (eventModal) {
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                closeSubModal();
+            }
+        });
+    }
 
     // Escape key handling for both modals
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (eventModal.classList.contains('active')) {
+            if (eventModal && eventModal.classList.contains('active')) {
                 closeSubModal();
-            } else if (modal.classList.contains('active')) {
+            } else if (modal && modal.classList.contains('active')) {
                 closeModalFunc();
             }
         }
