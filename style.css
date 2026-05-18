@@ -735,3 +735,339 @@ body {
         border-radius: 14px;
     }
 }
+
+/* Modal Routine Styles & Placeholders */
+.routine-header {
+    text-align: center;
+    margin: 1.5rem 0 2rem;
+    position: relative;
+}
+
+.routine-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #fff 30%, #FF00E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.1rem;
+    text-shadow: 0 0 20px rgba(255, 0, 229, 0.2);
+}
+
+.routine-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+}
+
+.landscape-placeholder {
+    width: 100%;
+    height: 180px;
+    border-radius: 18px;
+    margin-top: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.placeholder-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12;
+    transition: opacity 0.4s ease, transform 0.8s ease;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px) saturate(1.4);
+}
+
+.daylife-box .placeholder-glow {
+    background-image: linear-gradient(135deg, #ee7752 0%, #fbe8d3 100%);
+}
+
+.nightlife-box .placeholder-glow {
+    background-image: linear-gradient(135deg, #7b2ff7 0%, #f953c6 100%);
+}
+
+.apartments-box .placeholder-glow {
+    background-image: linear-gradient(135deg, #00d1ff 0%, #00f2fe 100%);
+}
+
+.placeholder-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    pointer-events: none;
+    text-align: center;
+}
+
+.placeholder-icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(10, 10, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.placeholder-icon-wrap i {
+    transform: translateX(2px); /* Centering play icon */
+}
+
+.click-hint {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover States for Placeholders */
+.landscape-placeholder:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.daylife-box:hover {
+    box-shadow: 0 12px 25px rgba(238, 119, 82, 0.2), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+.nightlife-box:hover {
+    box-shadow: 0 12px 25px rgba(123, 47, 247, 0.2), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+.apartments-box:hover {
+    box-shadow: 0 12px 25px rgba(0, 209, 255, 0.2), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.landscape-placeholder:hover .placeholder-glow {
+    opacity: 0.28;
+    transform: scale(1.08);
+}
+
+.landscape-placeholder:hover .placeholder-icon-wrap {
+    transform: scale(1.15);
+    background: #fff;
+    color: #060611;
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.landscape-placeholder:hover .click-hint {
+    color: #fff;
+    transform: translateY(1px);
+}
+
+/* Sub-Modal Overlay (Event Detail) */
+.sub-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 4, 15, 0.88);
+    backdrop-filter: blur(20px);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.sub-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sub-modal-content {
+    background: rgba(15, 15, 32, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 26px;
+    width: 90%;
+    max-width: 520px;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255, 0, 229, 0.1);
+}
+
+.sub-modal-overlay.active .sub-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.sub-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.sub-close-btn:hover {
+    background: #FF00E5;
+    border-color: #FF00E5;
+    transform: rotate(90deg);
+}
+
+.sub-video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.65);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.sub-video-container:hover .video-overlay {
+    opacity: 0;
+}
+
+.sub-modal-body {
+    padding: 2rem;
+}
+
+.event-badge {
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.daylife-badge {
+    background: rgba(238, 119, 82, 0.15);
+    border: 1px solid rgba(238, 119, 82, 0.4);
+    color: #ee7752;
+}
+
+.nightlife-badge {
+    background: rgba(147, 51, 234, 0.15);
+    border: 1px solid rgba(147, 51, 234, 0.4);
+    color: #a855f7;
+}
+
+.apartments-badge {
+    background: rgba(0, 209, 255, 0.15);
+    border: 1px solid rgba(0, 209, 255, 0.4);
+    color: #00d1ff;
+}
+
+.event-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.event-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* Mobile Modal Adjustments */
+@media (max-width: 768px) {
+    .routine-title {
+        font-size: 2.2rem;
+    }
+    
+    .landscape-placeholder {
+        height: 140px;
+        margin-top: 1rem;
+    }
+
+    .placeholder-icon-wrap {
+        width: 42px;
+        height: 42px;
+        font-size: 0.95rem;
+    }
+
+    .click-hint {
+        font-size: 0.78rem;
+    }
+    
+    .sub-modal-content {
+        width: 94%;
+        border-radius: 20px;
+    }
+    
+    .sub-modal-body {
+        padding: 1.5rem;
+    }
+    
+    .event-title {
+        font-size: 1.3rem;
+    }
+    
+    .event-description {
+        font-size: 0.95rem;
+    }
+}

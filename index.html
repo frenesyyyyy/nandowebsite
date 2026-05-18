@@ -113,18 +113,73 @@
                 <h2 id="modalTitle" class="modal-title">Title</h2>
             </div>
             <div class="modal-body">
-                <div class="modal-section">
+                <div class="routine-header">
+                    <h2 class="routine-title">Routine</h2>
+                    <span class="routine-subtitle">L'esperienza quotidiana pensata per te</span>
+                </div>
+                
+                <div class="modal-section" data-section="daylife">
                     <h3>☀️ Giorno</h3>
                     <p id="modalDaylife">...</p>
+                    <div class="landscape-placeholder daylife-box" id="daylifePlaceholder">
+                        <div class="placeholder-glow"></div>
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon-wrap">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                            <span class="click-hint">Premi per vedere il video del Giorno</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-section">
+                
+                <div class="modal-section" data-section="nightlife">
                     <h3>🌙 Notte</h3>
                     <p id="modalNightlife">...</p>
+                    <div class="landscape-placeholder nightlife-box" id="nightlifePlaceholder">
+                        <div class="placeholder-glow"></div>
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon-wrap">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                            <span class="click-hint">Premi per vedere il video della Notte</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-section">
+                
+                <div class="modal-section" data-section="apartments">
                     <h3>🏨 Alloggi</h3>
                     <p id="modalApartments">...</p>
+                    <div class="landscape-placeholder apartments-box" id="apartmentsPlaceholder">
+                        <div class="placeholder-glow"></div>
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon-wrap">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                            <span class="click-hint">Premi per vedere il video degli Alloggi</span>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Detail Sub-Modal Overlay -->
+    <div class="sub-modal-overlay" id="eventModal">
+        <div class="sub-modal-content">
+            <button class="sub-close-btn" id="closeEventModal" aria-label="Chiudi dettaglio">&times;</button>
+            <div class="sub-video-container">
+                <video id="eventVideo" controls playsinline loop class="event-video">
+                    <source src="" type="video/mp4">
+                    Il tuo browser non supporta il tag video.
+                </video>
+                <div class="video-overlay" id="videoOverlay">
+                    <i class="fa-solid fa-circle-play"></i>
+                </div>
+            </div>
+            <div class="sub-modal-body">
+                <span class="event-badge" id="eventBadge">Tag</span>
+                <h3 id="eventTitle" class="event-title">Esperienza</h3>
+                <p id="eventDescription" class="event-description">Descrizione dettagliata...</p>
             </div>
         </div>
     </div>
