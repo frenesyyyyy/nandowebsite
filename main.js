@@ -216,6 +216,8 @@ const initWebsite = () => {
     const prenotaOraBtn = document.getElementById('prenotaOraBtn');
     const bookingContactCard = document.getElementById('bookingContactCard');
 
+    let activeDestKey = null;
+
     function getActiveDestinationTitle() {
         if (activeDestKey && destinationsData[activeDestKey]) {
             return destinationsData[activeDestKey].title;
@@ -314,9 +316,6 @@ const initWebsite = () => {
     const eventBadge = document.getElementById('eventBadge');
     const eventTitle = document.getElementById('eventTitle');
     const eventDescription = document.getElementById('eventDescription');
-
-    // Keep track of the currently open destination key
-    let activeDestKey = null;
 
     // Open Modal logic
     document.querySelectorAll('.destination-card').forEach(card => {
