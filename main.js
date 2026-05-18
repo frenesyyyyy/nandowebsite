@@ -206,15 +206,15 @@ const initWebsite = () => {
                 </div>
             </div>`,
             nightlife: "La capitale mondiale del clubbing. Balla con i DJ set più famosi al Pacha, all'Amnesia o all'Ushuaïa per una notte epica.",
-            apartments: "Ville ultra-lusso con piscina a sfioro e tipiche finche immerse nella natura incontaminata dell'isola.",
+            apartments: "Vivi l'Ushuaïa Experience: accesso prioritario assoluto al tempio mondiale del clubbing all'aperto, con tavolo VIP riservato e vista esclusiva sul main-stage.",
             daylifeEventTitle: "Formentera Luxury Yacht Charter",
             daylifeEventDesc: "Naviga verso le spiagge paradisiache e incontaminate di Formentera a bordo di uno yacht privato di 16 metri. Attrezzatura da snorkeling professionale guidato e pranzo esclusivo direttamente servito a bordo.",
             daylifeVideo: "assets/ibiza_day.mp4",
             nightlifeEventTitle: "Ushuaïa Main-Stage VIP Terrace",
             nightlifeEventDesc: "Il tempio assoluto del clubbing diurno. Assisti allo show dei DJ più famosi al mondo da una terrazza VIP sopraelevata, con vista panoramica straordinaria sul palco, servizio champagne e scenografie spettacolari.",
             nightlifeVideo: "assets/ibiza_night.mp4",
-            apartmentsEventTitle: "Es Vedrà Majestic Cliff Villa",
-            apartmentsEventDesc: "Una magnifica villa moderna incastonata nella roccia proprio di fronte al celebre e mistico isolotto di Es Vedrà, dotata di piscina a sfioro riscaldata, braciere esterno ed eleganti salotti lounge.",
+            apartmentsEventTitle: "👑 Ushuaïa Day-Club VIP Table",
+            apartmentsEventDesc: "La massima espressione del lusso nel party diurno. Ingresso salta-coda dal varco VIP, tavolo riservato in balconata sopraelevata con vista mozzafiato sul palco principale, servizio di sicurezza privato e bottiglie premium incluse.",
             apartmentsVideo: "assets/ibiza_apartments.mp4"
         }
     };
@@ -400,6 +400,44 @@ const initWebsite = () => {
                     }
                 }
 
+                // Customize Apartments / Ushuaia Experience option card for Ibiza
+                const apartmentsCard = document.querySelector('.routine-option-card[data-target="apartments"]');
+                if (apartmentsCard) {
+                    const iconContainer = apartmentsCard.querySelector('.option-icon');
+                    const labelContainer = apartmentsCard.querySelector('.option-label');
+                    const sectionHeader = document.querySelector('.modal-section[data-section="apartments"] h3');
+
+                    if (destKey === 'ibiza') {
+                        if (iconContainer) {
+                            iconContainer.innerHTML = '<i class="fa-solid fa-crown" style="color: #f59e0b; filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.7)); font-size: 1.15rem;"></i>';
+                        }
+                        if (labelContainer) {
+                            labelContainer.textContent = 'Ushuaia Experience';
+                            labelContainer.style.background = 'linear-gradient(135deg, #ffffff, #f59e0b)';
+                            labelContainer.style.webkitBackgroundClip = 'text';
+                            labelContainer.style.webkitTextFillColor = 'transparent';
+                            labelContainer.style.fontWeight = '700';
+                        }
+                        if (sectionHeader) {
+                            sectionHeader.innerHTML = '✨ Ushuaïa Experience';
+                        }
+                    } else {
+                        if (iconContainer) {
+                            iconContainer.innerHTML = '<i class="fa-solid fa-house-chimney"></i>';
+                        }
+                        if (labelContainer) {
+                            labelContainer.textContent = 'Alloggi';
+                            labelContainer.style.background = 'none';
+                            labelContainer.style.webkitBackgroundClip = 'none';
+                            labelContainer.style.webkitTextFillColor = 'initial';
+                            labelContainer.style.fontWeight = '400';
+                        }
+                        if (sectionHeader) {
+                            sectionHeader.innerHTML = '🏨 Alloggi';
+                        }
+                    }
+                }
+
                 modal.classList.add('active');
             }
         });
@@ -410,6 +448,24 @@ const initWebsite = () => {
         if (modal) modal.classList.remove('active');
         const ibizaWarningBox = document.getElementById('ibizaWarningBox');
         if (ibizaWarningBox) ibizaWarningBox.style.display = 'none';
+
+        // Reset Apartments option card to default
+        const apartmentsCard = document.querySelector('.routine-option-card[data-target="apartments"]');
+        if (apartmentsCard) {
+            const iconContainer = apartmentsCard.querySelector('.option-icon');
+            const labelContainer = apartmentsCard.querySelector('.option-label');
+            const sectionHeader = document.querySelector('.modal-section[data-section="apartments"] h3');
+            if (iconContainer) iconContainer.innerHTML = '<i class="fa-solid fa-house-chimney"></i>';
+            if (labelContainer) {
+                labelContainer.textContent = 'Alloggi';
+                labelContainer.style.background = 'none';
+                labelContainer.style.webkitBackgroundClip = 'none';
+                labelContainer.style.webkitTextFillColor = 'initial';
+                labelContainer.style.fontWeight = '400';
+            }
+            if (sectionHeader) sectionHeader.innerHTML = '🏨 Alloggi';
+        }
+
         activeDestKey = null;
         closeSubModal();
     };
