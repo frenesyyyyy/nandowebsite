@@ -193,7 +193,15 @@
 
             // Temporary code check
             if (code === 'ENZO') {
-                localStorage.setItem('active_promo', 'ENZO');
+                try {
+                    localStorage.setItem('active_promo', 'ENZO');
+                } catch (e) {
+                    try {
+                        sessionStorage.setItem('active_promo', 'ENZO');
+                    } catch (err) {
+                        document.cookie = "active_promo=ENZO; path=/; max-age=86400";
+                    }
+                }
                 window.location.href = 'index.html';
             } else {
                 // Show shake error

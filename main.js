@@ -1,17 +1,61 @@
 const initWebsite = () => {
+    // Safe storage wrapper to prevent crashes in private browsing or high-security settings
+    const safeStorage = {
+        _data: {},
+        getItem(key) {
+            try {
+                return localStorage.getItem(key);
+            } catch (e) {
+                try {
+                    return sessionStorage.getItem(key);
+                } catch (err) {
+                    const match = document.cookie.match(new RegExp('(^| )' + key + '=([^;]*)'));
+                    if (match) return decodeURIComponent(match[2]);
+                    return this._data[key] || null;
+                }
+            }
+        },
+        setItem(key, value) {
+            try {
+                localStorage.setItem(key, value);
+            } catch (e) {
+                try {
+                    sessionStorage.setItem(key, value);
+                } catch (err) {
+                    document.cookie = `${key}=${encodeURIComponent(value)}; path=/; max-age=86400`;
+                    this._data[key] = value;
+                }
+            }
+        },
+        removeItem(key) {
+            try {
+                localStorage.removeItem(key);
+            } catch (e) {
+                try {
+                    sessionStorage.removeItem(key);
+                } catch (err) {
+                    document.cookie = `${key}=; path=/; max-age=-1`;
+                    delete this._data[key];
+                }
+            }
+        }
+    };
+
     const menuBtn = document.getElementById('menuBtn');
     const menuPanel = document.getElementById('menuPanel');
 
     // Toggle menu
-    menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuBtn.classList.toggle('active');
-        menuPanel.classList.toggle('active');
-    });
+    if (menuBtn && menuPanel) {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuBtn.classList.toggle('active');
+            menuPanel.classList.toggle('active');
+        });
+    }
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!menuPanel.contains(e.target) && menuPanel.classList.contains('active')) {
+        if (menuPanel && menuBtn && !menuPanel.contains(e.target) && menuPanel.classList.contains('active')) {
             menuBtn.classList.remove('active');
             menuPanel.classList.remove('active');
         }
@@ -180,7 +224,7 @@ const initWebsite = () => {
     }
 
     function updateBookingContactCard(destTitle) {
-        const activePromo = localStorage.getItem('active_promo');
+        const activePromo = safeStorage.getItem('active_promo');
         const pfp = document.getElementById('contactCardPfp');
         const name = document.getElementById('contactCardName');
         const waBtn = document.getElementById('contactCardWaBtn');
@@ -206,7 +250,7 @@ const initWebsite = () => {
     }
 
     function checkPromoCode() {
-        const activePromo = localStorage.getItem('active_promo');
+        const activePromo = safeStorage.getItem('active_promo');
         if (activePromo === 'ENZO') {
             if (promoBadge) promoBadge.style.display = 'flex';
         } else {
@@ -218,7 +262,7 @@ const initWebsite = () => {
     if (clearPromoBtn) {
         clearPromoBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            localStorage.removeItem('active_promo');
+            safeStorage.removeItem('active_promo');
             checkPromoCode();
         });
     }
@@ -556,7 +600,7 @@ document.addEventListener('dragstart', (e) => {
    ========================================== */
 function initGDPR() {
     // If user already made a choice, don't show the banner
-    if (localStorage.getItem('gdpr_accepted')) return;
+    if (safeStorage.getItem('gdpr_accepted')) return;
 
     // Create the banner container element
     const banner = document.createElement('div');
@@ -615,7 +659,7 @@ function initGDPR() {
 
     if (acceptBtn) {
         acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('gdpr_accepted', 'true');
+            safeStorage.setItem('gdpr_accepted', 'true');
             hideBanner(banner);
         });
         acceptBtn.addEventListener('mouseenter', () => {
@@ -630,7 +674,7 @@ function initGDPR() {
 
     if (declineBtn) {
         declineBtn.addEventListener('click', () => {
-            localStorage.setItem('gdpr_accepted', 'declined');
+            safeStorage.setItem('gdpr_accepted', 'declined');
             hideBanner(banner);
         });
         declineBtn.addEventListener('mouseenter', () => {
