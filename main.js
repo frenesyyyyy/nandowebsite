@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Destination Data
     const destinationsData = {
         albania: {
-            title: "Albania",
+            title: "Saranda & Ksamil",
             image: "assets/albania.jfif",
             daylife: "Esplora le gemme nascoste della Riviera Albanese, dalle acque cristalline di Ksamil ai suggestivi passi montani di Llogara.",
             nightlife: "Vivi l'energia vibrante del distretto Blloku a Tirana o goditi un beach party esclusivo sotto le stelle a Saranda.",
@@ -56,21 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDaylife = document.getElementById('modalDaylife');
     const modalNightlife = document.getElementById('modalNightlife');
     const modalApartments = document.getElementById('modalApartments');
-    
+
     // Open Modal logic
     document.querySelectorAll('.destination-card').forEach(card => {
         card.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent jump to top
             const destKey = card.getAttribute('data-destination');
             const data = destinationsData[destKey];
-            
-            if(data) {
+
+            if (data) {
                 modalImage.src = data.image;
                 modalTitle.textContent = data.title;
                 modalDaylife.textContent = data.daylife;
                 modalNightlife.textContent = data.nightlife;
                 modalApartments.textContent = data.apartments;
-                
+
                 modal.classList.add('active');
             }
         });
@@ -82,17 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     closeBtn.addEventListener('click', closeModalFunc);
-    
+
     // Close on outside click
     modal.addEventListener('click', (e) => {
-        if(e.target === modal) {
+        if (e.target === modal) {
             closeModalFunc();
         }
     });
 
     // Escape key
     document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && modal.classList.contains('active')) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModalFunc();
         }
     });
