@@ -545,24 +545,6 @@ document.addEventListener('dragstart', (e) => {
     }
 });
 
-// 4. DevTools Detection & Source Protection Loop
-setInterval(() => {
-    (function() {
-        const before = new Date().getTime();
-        debugger;
-        const after = new Date().getTime();
-        if (after - before > 100) {
-            document.body.innerHTML = `
-                <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:#060611; color:#ffffff; font-family:'Outfit', sans-serif; text-align:center; padding:30px; box-sizing:border-box;">
-                    <div style="font-size:3rem; margin-bottom:20px; background:linear-gradient(135deg, #a855f7, #ff00e5); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">🔒</div>
-                    <h2 style="font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; font-size:1.5rem;">Accesso Protetto</h2>
-                    <p style="color:rgba(255,255,255,0.6); max-width:400px; font-size:0.9rem; line-height:1.5; font-weight:300;">La visualizzazione del codice sorgente e gli strumenti di ispezione dello sviluppatore sono disabilitati per tutelare i diritti d'autore e i contenuti multimediali protetti.</p>
-                </div>
-            `;
-        }
-    })();
-}, 1000);
-
 /* ==========================================
    GDPR COOKIE CONSENT ENGINE
    ========================================== */
