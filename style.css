@@ -1740,3 +1740,102 @@ body {
     }
 }
 
+/* Luxury Mini Video Display Card Styles */
+.mini-video-display {
+    width: 86px;
+    height: 58px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Category specific thumbnails (slightly offset / less blurred) */
+.gemme-video {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
+}
+
+.beach-video {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
+}
+
+.boat-video {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('assets/albania.jfif');
+}
+
+.mini-video-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 229, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.mini-video-display i {
+    color: #fff;
+    font-size: 0.85rem;
+    z-index: 3;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.45);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+/* Hover effects */
+.mini-video-display:hover {
+    transform: scale(1.08) translateY(-1px);
+    border-color: rgba(255, 0, 229, 0.6);
+    box-shadow: 0 8px 18px rgba(255, 0, 229, 0.3);
+}
+
+.mini-video-display:hover::before {
+    opacity: 1;
+}
+
+.mini-video-display:hover i {
+    transform: scale(1.15);
+    color: #00d1ff;
+    border-color: #00d1ff;
+    text-shadow: 0 0 12px rgba(0, 209, 255, 0.8);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .mini-video-display {
+        width: 70px;
+        height: 48px;
+        border-radius: 10px;
+    }
+    
+    .mini-video-display i {
+        font-size: 0.72rem;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+
