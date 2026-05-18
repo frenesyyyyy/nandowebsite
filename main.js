@@ -54,18 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <!-- Option 2 -->
                 <div class="daylife-event-item">
-                    <div class="event-header-row">
-                        <div class="event-icon-dot"><i class="fa-solid fa-umbrella-beach"></i></div>
-                        <div class="event-details">
-                            <span class="event-tag">VIP Vibe</span>
-                            <h4>Beach Party Esclusivo</h4>
+                    <h2 class="fancy-section-title">Feste in Spiaggia</h2>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🌴 Mulino Beach Club</h4>
+                        <p class="event-description">Accedi al club sulla spiaggia più ricercato di Ksamil, tra lettini VIP riservati e drink esclusivi a bordo mare.</p>
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_mulino.mp4" data-title="🌴 Mulino Beach Club" data-desc="Accedi al club sulla spiaggia più ricercato di Ksamil, tra lettini VIP riservati e drink esclusivi a bordo mare." data-badge="Feste in Spiaggia">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="event-description">Accedi ai club sulla spiaggia più ricercati di Ksamil, tra lettini VIP riservati e drink firmati a bordo mare.</p>
-                    <div class="wide-video-preview" data-video-src="assets/albania_day_beach.mp4" data-title="Beach Party Esclusivo" data-desc="Balla sotto il sole e rilassati sui lettini VIP del beach club più esclusivo della Riviera." data-badge="VIP Vibe">
-                        <div class="play-overlay">
-                            <i class="fa-solid fa-circle-play"></i>
-                            <span>Guarda il Video</span>
+                    
+                    <div class="sub-event-divider"></div>
+                    
+                    <div class="sub-event-block" style="width: 100%;">
+                        <h4 class="sub-event-title">🗿 African Beach Club</h4>
+                        <p class="event-description">Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto.</p>
+                        <div class="wide-video-preview" data-video-src="assets/albania_day_african.mp4" data-title="🗿 African Beach Club" data-desc="Vivi il ritmo tribale e tropicale del club più energetico della baia, tra scenografie incredibili, drink esotici e balli fino al tramonto." data-badge="Feste in Spiaggia">
+                            <div class="play-overlay">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Guarda il Video</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -411,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (badge.includes("Explorer") || badge.includes("Escursioni")) {
                         eventBadge.classList.add('daylife-badge');
-                    } else if (badge.includes("Vibe")) {
+                    } else if (badge.includes("Vibe") || badge.includes("Feste")) {
                         eventBadge.classList.add('nightlife-badge');
                     } else if (badge.includes("Club")) {
                         eventBadge.classList.add('apartments-badge');
