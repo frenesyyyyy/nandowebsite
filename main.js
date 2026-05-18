@@ -22,7 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
         albania: {
             title: "Saranda & Ksamil",
             image: "assets/albania.jfif",
-            daylife: "Esplora le gemme nascoste della Riviera Albanese, dalle acque cristalline di Ksamil ai suggestivi passi montani di Llogara.",
+            daylife: `<div class="daylife-events-list">
+                <div class="daylife-event-item">
+                    <div class="event-icon-dot pink"><i class="fa-solid fa-compass"></i></div>
+                    <div class="event-details">
+                        <span class="event-tag">Riviera Explorer</span>
+                        <h4>Gemme Nascoste</h4>
+                        <p>Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
+                    </div>
+                </div>
+                <div class="daylife-event-item">
+                    <div class="event-icon-dot cyan"><i class="fa-solid fa-umbrella-beach"></i></div>
+                    <div class="event-details">
+                        <span class="event-tag">VIP Vibe</span>
+                        <h4>Beach Party Esclusivo</h4>
+                        <p>Accedi ai club sulla spiaggia più ricercati di Ksamil, tra lettini VIP riservati e drink firmati a bordo mare.</p>
+                    </div>
+                </div>
+                <div class="daylife-event-item">
+                    <div class="event-icon-dot purple"><i class="fa-solid fa-ship"></i></div>
+                    <div class="event-details">
+                        <span class="event-tag">Sunset Club</span>
+                        <h4>Epic Boat Party</h4>
+                        <p>Sali a bordo per un party in barca privato ed elettrizzante al tramonto, cullato da onde di cristallo e dj-set d'élite.</p>
+                    </div>
+                </div>
+            </div>`,
             nightlife: "Vivi l'energia vibrante del distretto Blloku a Tirana o goditi un beach party esclusivo sotto le stelle a Saranda.",
             apartments: "Dai moderni attici nel cuore di Tirana alle lussuose ville fronte mare lungo la costa ionica.",
             daylifeEventTitle: "Islands Private Yacht Cruise",
@@ -116,9 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeDestKey = destKey;
                 modalImage.src = data.image;
                 modalTitle.textContent = data.title;
-                modalDaylife.textContent = data.daylife;
-                modalNightlife.textContent = data.nightlife;
-                modalApartments.textContent = data.apartments;
+                modalDaylife.innerHTML = data.daylife;
+                modalNightlife.innerHTML = data.nightlife;
+                modalApartments.innerHTML = data.apartments;
 
                 modal.classList.add('active');
             }
