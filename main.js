@@ -80,24 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>
-
-                <!-- Option 3 -->
-                <div class="daylife-event-item">
-                    <div class="event-header-row">
-                        <div class="event-icon-dot"><i class="fa-solid fa-ship"></i></div>
-                        <div class="event-details">
-                            <span class="event-tag">Sunset Club</span>
-                            <h4>Epic Boat Party</h4>
-                        </div>
-                    </div>
-                    <p class="event-description">Sali a bordo per un party in barca privato ed elettrizzante al tramonto, cullato da onde di cristallo e dj-set d'élite.</p>
-                    <div class="wide-video-preview" data-video-src="assets/albania_day_boat.mp4" data-title="Epic Boat Party" data-desc="Vivi l'adrenalina di un party in barca privato navigando le acque turchesi del mar Ionio." data-badge="Sunset Club">
-                        <div class="play-overlay">
-                            <i class="fa-solid fa-circle-play"></i>
-                            <span>Guarda il Video</span>
-                        </div>
-                    </div>
-                </div>
             </div>`,
             nightlife: "Vivi l'energia vibrante del distretto Blloku a Tirana o goditi un beach party esclusivo sotto le stelle a Saranda.",
             apartments: "Dai moderni attici nel cuore di Tirana alle lussuose ville fronte mare lungo la costa ionica.",
