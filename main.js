@@ -193,14 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (name) name.textContent = 'Enzo';
             
             const msgEnzo = encodeURIComponent(`Ciao Enzo! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
-            if (waBtn) waBtn.href = `https://wa.me/393451234567?text=${msgEnzo}`;
+            if (waBtn) waBtn.href = `https://wa.me/393804317758?text=${msgEnzo}`;
             if (igBtn) igBtn.href = 'https://instagram.com/enzo_summerclub';
         } else {
             if (pfp) pfp.src = 'assets/nando_profile.png';
             if (name) name.textContent = 'Nando';
             
             const msgNando = encodeURIComponent(`Ciao Nando! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
-            if (waBtn) waBtn.href = `https://wa.me/393471234567?text=${msgNando}`;
+            if (waBtn) waBtn.href = `https://wa.me/393804317758?text=${msgNando}`;
             if (igBtn) igBtn.href = 'https://instagram.com/summerclub';
         }
     }
