@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             apartmentsEventTitle: "Es Vedrà Majestic Cliff Villa",
             apartmentsEventDesc: "Una magnifica villa moderna incastonata nella roccia proprio di fronte al celebre e mistico isolotto di Es Vedrà, dotata di piscina a sfioro riscaldata, braciere esterno ed eleganti salotti lounge.",
             apartmentsVideo: "assets/ibiza_apartments.mp4"
+        }
     };
 
     // Temporary override all video sources with the YouTube Shorts link
