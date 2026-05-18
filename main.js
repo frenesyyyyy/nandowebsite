@@ -172,22 +172,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const prenotaOraBtn = document.getElementById('prenotaOraBtn');
     const bookingContactCard = document.getElementById('bookingContactCard');
 
-    function updateBookingContactCard() {
+    function getActiveDestinationTitle() {
+        if (activeDestKey && destinationsData[activeDestKey]) {
+            return destinationsData[activeDestKey].title;
+        }
+        return '';
+    }
+
+    function updateBookingContactCard(destTitle) {
         const activePromo = localStorage.getItem('active_promo');
         const pfp = document.getElementById('contactCardPfp');
         const name = document.getElementById('contactCardName');
         const waBtn = document.getElementById('contactCardWaBtn');
         const igBtn = document.getElementById('contactCardIgBtn');
 
+        const titleText = destTitle ? ` per il viaggio a ${destTitle}` : '';
+
         if (activePromo === 'ENZO') {
             if (pfp) pfp.src = 'assets/enzo_profile.png';
             if (name) name.textContent = 'Enzo';
-            if (waBtn) waBtn.href = 'https://wa.me/393451234567';
+            
+            const msgEnzo = encodeURIComponent(`Ciao Enzo! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
+            if (waBtn) waBtn.href = `https://wa.me/393451234567?text=${msgEnzo}`;
             if (igBtn) igBtn.href = 'https://instagram.com/enzo_summerclub';
         } else {
             if (pfp) pfp.src = 'assets/nando_profile.png';
             if (name) name.textContent = 'Nando';
-            if (waBtn) waBtn.href = 'https://wa.me/393471234567';
+            
+            const msgNando = encodeURIComponent(`Ciao Nando! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
+            if (waBtn) waBtn.href = `https://wa.me/393471234567?text=${msgNando}`;
             if (igBtn) igBtn.href = 'https://instagram.com/summerclub';
         }
     }
@@ -199,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             if (promoBadge) promoBadge.style.display = 'none';
         }
-        updateBookingContactCard();
+        updateBookingContactCard(getActiveDestinationTitle());
     }
 
     if (clearPromoBtn) {
