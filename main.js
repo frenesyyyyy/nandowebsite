@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <p class="event-description">Esplora le insenature segrete e la natura incontaminata della Riviera Albanese con escursioni esclusive curate per te.</p>
                     <div class="wide-video-preview" data-video-src="assets/albania_day_gemme.mp4" data-title="Gemme Nascoste" data-desc="Esplora le gemme nascoste della Riviera Albanese con le nostre escursioni giornaliere curate nei minimi dettagli." data-badge="Riviera Explorer">
-                        <i class="fa-solid fa-circle-play"></i>
-                        <span>Guarda il Video dell'escursione</span>
+                        <div class="play-overlay">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Guarda il Video</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -50,8 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <p class="event-description">Accedi ai club sulla spiaggia più ricercati di Ksamil, tra lettini VIP riservati e drink firmati a bordo mare.</p>
                     <div class="wide-video-preview" data-video-src="assets/albania_day_beach.mp4" data-title="Beach Party Esclusivo" data-desc="Balla sotto il sole e rilassati sui lettini VIP del beach club più esclusivo della Riviera." data-badge="VIP Vibe">
-                        <i class="fa-solid fa-circle-play"></i>
-                        <span>Guarda il Video del Beach Party</span>
+                        <div class="play-overlay">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Guarda il Video</span>
+                        </div>
                     </div>
                 </div>
 
@@ -66,8 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <p class="event-description">Sali a bordo per un party in barca privato ed elettrizzante al tramonto, cullato da onde di cristallo e dj-set d'élite.</p>
                     <div class="wide-video-preview" data-video-src="assets/albania_day_boat.mp4" data-title="Epic Boat Party" data-desc="Vivi l'adrenalina di un party in barca privato navigando le acque turchesi del mar Ionio." data-badge="Sunset Club">
-                        <i class="fa-solid fa-circle-play"></i>
-                        <span>Guarda il Video del Boat Party</span>
+                        <div class="play-overlay">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Guarda il Video</span>
+                        </div>
                     </div>
                 </div>
             </div>`,
@@ -196,6 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalDaylife.innerHTML = data.daylife;
                 modalNightlife.innerHTML = data.nightlife;
                 modalApartments.innerHTML = data.apartments;
+
+                // Dynamically set unblurred destination background image for all wide-video-previews in this modal
+                setTimeout(() => {
+                    modal.querySelectorAll('.wide-video-preview').forEach(preview => {
+                        preview.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('${data.image}')`;
+                    });
+                }, 0);
 
                 // Reset to Giorno on modal open
                 switchSection('daylife');
