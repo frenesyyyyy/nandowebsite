@@ -17,6 +17,13 @@
 </head>
 
 <body>
+    <!-- Floating Active Promo Badge -->
+    <div class="promo-badge" id="promoBadge" style="display: none;">
+        <span class="promo-dot"></span>
+        <span class="promo-text" id="promoText">Codice Promo: ENZO</span>
+        <button class="clear-promo-btn" id="clearPromoBtn" title="Rimuovi codice promozionale">&times;</button>
+    </div>
+
     <!-- Background Looping Video -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="assets/bg-video.mp4" type="video/mp4">
@@ -182,6 +189,35 @@
                 <h2 id="modalTitle" class="modal-title">Title</h2>
             </div>
             <div class="modal-body">
+                
+                <!-- PRENOTA ORA Booking Panel -->
+                <div class="prenota-booking-container">
+                    <button class="prenota-ora-btn" id="prenotaOraBtn">
+                        <i class="fa-solid fa-calendar-check"></i> Prenota Ora
+                    </button>
+                    
+                    <!-- Dynamic Contact Profile Card (Nando or Enzo) -->
+                    <div class="booking-contact-card" id="bookingContactCard">
+                        <div class="contact-card-header">
+                            <div class="contact-card-pfp-wrap">
+                                <img src="" alt="PFP" class="contact-card-pfp" id="contactCardPfp">
+                                <span class="contact-card-status-dot"></span>
+                            </div>
+                            <div class="contact-card-info">
+                                <h4 class="contact-card-name" id="contactCardName">Nome</h4>
+                                <p class="contact-card-role">PR Specialist / Assistente Personale</p>
+                            </div>
+                        </div>
+                        <div class="contact-card-actions">
+                            <a href="" target="_blank" class="contact-action-link wa" id="contactCardWaBtn">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="" target="_blank" class="contact-action-link ig" id="contactCardIgBtn">
+                                <i class="fa-brands fa-instagram"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- 3 Options selector grid to dynamically explode routines -->
                 <div class="routine-options-grid">

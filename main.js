@@ -166,6 +166,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalNightlife = document.getElementById('modalNightlife');
     const modalApartments = document.getElementById('modalApartments');
 
+    // Promo Code & Booking Agent Engine
+    const promoBadge = document.getElementById('promoBadge');
+    const clearPromoBtn = document.getElementById('clearPromoBtn');
+    const prenotaOraBtn = document.getElementById('prenotaOraBtn');
+    const bookingContactCard = document.getElementById('bookingContactCard');
+
+    function updateBookingContactCard() {
+        const activePromo = localStorage.getItem('active_promo');
+        const pfp = document.getElementById('contactCardPfp');
+        const name = document.getElementById('contactCardName');
+        const waBtn = document.getElementById('contactCardWaBtn');
+        const igBtn = document.getElementById('contactCardIgBtn');
+
+        if (activePromo === 'ENZO') {
+            if (pfp) pfp.src = 'assets/enzo_profile.png';
+            if (name) name.textContent = 'Enzo';
+            if (waBtn) waBtn.href = 'https://wa.me/393451234567';
+            if (igBtn) igBtn.href = 'https://instagram.com/enzo_summerclub';
+        } else {
+            if (pfp) pfp.src = 'assets/nando_profile.png';
+            if (name) name.textContent = 'Nando';
+            if (waBtn) waBtn.href = 'https://wa.me/393471234567';
+            if (igBtn) igBtn.href = 'https://instagram.com/summerclub';
+        }
+    }
+
+    function checkPromoCode() {
+        const activePromo = localStorage.getItem('active_promo');
+        if (activePromo === 'ENZO') {
+            if (promoBadge) promoBadge.style.display = 'flex';
+        } else {
+            if (promoBadge) promoBadge.style.display = 'none';
+        }
+        updateBookingContactCard();
+    }
+
+    if (clearPromoBtn) {
+        clearPromoBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            localStorage.removeItem('active_promo');
+            checkPromoCode();
+        });
+    }
+
+    if (prenotaOraBtn && bookingContactCard) {
+        prenotaOraBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            bookingContactCard.classList.toggle('active');
+        });
+    }
+
+    // Initialize checking on load
+    checkPromoCode();
+
     // Tab elements inside modal
     const optionCards = document.querySelectorAll('.routine-option-card');
     const modalSections = document.querySelectorAll('.modal-section');
@@ -241,6 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         daylifePlaceholder.style.display = 'flex';
                     }
                 }
+
+                // Reset prenota contact card expansion on click
+                if (bookingContactCard) {
+                    bookingContactCard.classList.remove('active');
+                }
+                updateBookingContactCard();
 
                 modal.classList.add('active');
             }
