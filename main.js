@@ -194,7 +194,7 @@ const initWebsite = () => {
         dest.daylifeVideo = tempYtShort;
         dest.nightlifeVideo = tempYtShort;
         dest.apartmentsVideo = tempYtShort;
-        
+
         // Also override data-video-src inside dynamic daylife HTML template strings
         if (dest.daylife && typeof dest.daylife === 'string') {
             dest.daylife = dest.daylife.replace(/data-video-src="[^"]*"/g, `data-video-src="${tempYtShort}"`);
@@ -237,15 +237,15 @@ const initWebsite = () => {
         if (activePromo === 'ENZO') {
             if (pfp) pfp.src = 'assets/enzo_profile.png';
             if (name) name.textContent = 'Enzo';
-            
-            const msgEnzo = encodeURIComponent(`Ciao Enzo! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
+
+            const msgEnzo = encodeURIComponent(`Ciao Enzo! Vorrei ricevere maggiori informazioni${titleText} su SUMMER club!`);
             if (waBtn) waBtn.href = `https://wa.me/393804317758?text=${msgEnzo}`;
             if (igBtn) igBtn.href = 'https://instagram.com/enzo_summerclub';
         } else {
             if (pfp) pfp.src = 'assets/nando_profile.png';
             if (name) name.textContent = 'Nando';
-            
-            const msgNando = encodeURIComponent(`Ciao Nando! Vorrei ricevere maggiori informazioni${titleText} con SUMMER club! ☀️🌴`);
+
+            const msgNando = encodeURIComponent(`Ciao Nando! Vorrei ricevere maggiori informazioni${titleText} su SUMMER club!`);
             if (waBtn) waBtn.href = `https://wa.me/393804317758?text=${msgNando}`;
             if (igBtn) igBtn.href = 'https://instagram.com/summerclub';
         }
@@ -398,7 +398,7 @@ const initWebsite = () => {
     // Unified player that handles both local mp4 and YouTube streaming elegantly
     const loadAndPlayVideo = (videoSrc) => {
         const ytId = getYouTubeId(videoSrc);
-        
+
         if (ytId) {
             // Hide local video, display YouTube iframe
             if (eventVideo) {
@@ -440,7 +440,7 @@ const initWebsite = () => {
         // Set content dynamically
         if (eventTitle) eventTitle.textContent = data[type + 'EventTitle'] || "Esperienza Esclusiva";
         if (eventDescription) eventDescription.textContent = data[type + 'EventDesc'] || "Dettagli in arrivo per questa destinazione d'élite.";
-        
+
         // Handle badge styling and text
         if (eventBadge) {
             eventBadge.className = "event-badge"; // reset classes
@@ -504,12 +504,12 @@ const initWebsite = () => {
         const previewBtn = e.target.closest('.wide-video-preview');
         if (previewBtn) {
             e.stopPropagation();
-            
+
             const videoSrc = previewBtn.getAttribute('data-video-src');
             const title = previewBtn.getAttribute('data-title');
             const desc = previewBtn.getAttribute('data-desc');
             const badge = previewBtn.getAttribute('data-badge');
-            
+
             if (eventModal) {
                 // Populate dynamic content safely
                 if (eventTitle) eventTitle.textContent = title;
@@ -517,7 +517,7 @@ const initWebsite = () => {
                 if (eventBadge) {
                     eventBadge.textContent = badge;
                     eventBadge.className = "event-badge"; // reset classes
-                    
+
                     if (badge.includes("Explorer") || badge.includes("Escursioni")) {
                         eventBadge.classList.add('daylife-badge');
                     } else if (badge.includes("Vibe") || badge.includes("Feste")) {
@@ -526,7 +526,7 @@ const initWebsite = () => {
                         eventBadge.classList.add('apartments-badge');
                     }
                 }
-                
+
                 eventModal.classList.add('active');
                 loadAndPlayVideo(videoSrc);
             }
