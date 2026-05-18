@@ -244,19 +244,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close Modal logic
     const closeModalFunc = () => {
-        modal.classList.remove('active');
+        if (modal) modal.classList.remove('active');
         activeDestKey = null;
         closeSubModal();
     };
 
-    closeBtn.addEventListener('click', closeModalFunc);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModalFunc);
+    }
 
     // Close on outside click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModalFunc();
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+    }
 
     // Helper function to extract YouTube ID (including Shorts and share links)
     const getYouTubeId = (url) => {
@@ -276,27 +280,33 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (ytId) {
             // Hide local video, display YouTube iframe
-            eventVideo.style.display = 'none';
-            eventVideo.pause();
-            eventVideo.src = "";
-            
-            eventIframe.style.display = 'block';
-            eventIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+            if (eventVideo) {
+                eventVideo.style.display = 'none';
+                eventVideo.pause();
+                eventVideo.src = "";
+            }
+            if (eventIframe) {
+                eventIframe.style.display = 'block';
+                eventIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+            }
         } else {
             // Hide YouTube iframe, display local video player
-            eventIframe.style.display = 'none';
-            eventIframe.src = "";
-            
-            eventVideo.style.display = 'block';
-            const fallbackVideo = "assets/bg-video.mp4";
-            eventVideo.src = videoSrc || fallbackVideo;
-            eventVideo.load();
-            eventVideo.play().catch(err => {
-                console.log("Local video blocked, running fallback...", err);
-                eventVideo.src = fallbackVideo;
+            if (eventIframe) {
+                eventIframe.style.display = 'none';
+                eventIframe.src = "";
+            }
+            if (eventVideo) {
+                eventVideo.style.display = 'block';
+                const fallbackVideo = "assets/bg-video.mp4";
+                eventVideo.src = videoSrc || fallbackVideo;
                 eventVideo.load();
-                eventVideo.play().catch(e => console.log("Fallback failed:", e));
-            });
+                eventVideo.play().catch(err => {
+                    console.log("Local video blocked, running fallback...", err);
+                    eventVideo.src = fallbackVideo;
+                    eventVideo.load();
+                    eventVideo.play().catch(e => console.log("Fallback failed:", e));
+                });
+            }
         }
     };
 
@@ -307,24 +317,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data) return;
 
         // Set content dynamically
-        eventTitle.textContent = data[type + 'EventTitle'] || "Esperienza Esclusiva";
-        eventDescription.textContent = data[type + 'EventDesc'] || "Dettagli in arrivo per questa destinazione d'élite.";
+        if (eventTitle) eventTitle.textContent = data[type + 'EventTitle'] || "Esperienza Esclusiva";
+        if (eventDescription) eventDescription.textContent = data[type + 'EventDesc'] || "Dettagli in arrivo per questa destinazione d'élite.";
         
         // Handle badge styling and text
-        eventBadge.className = "event-badge"; // reset classes
-        if (type === 'daylife') {
-            eventBadge.textContent = "☀️ Giorno";
-            eventBadge.classList.add('daylife-badge');
-        } else if (type === 'nightlife') {
-            eventBadge.textContent = "🌙 Notte";
-            eventBadge.classList.add('nightlife-badge');
-        } else if (type === 'apartments') {
-            eventBadge.textContent = "🏨 Alloggi";
-            eventBadge.classList.add('apartments-badge');
+        if (eventBadge) {
+            eventBadge.className = "event-badge"; // reset classes
+            if (type === 'daylife') {
+                eventBadge.textContent = "☀️ Giorno";
+                eventBadge.classList.add('daylife-badge');
+            } else if (type === 'nightlife') {
+                eventBadge.textContent = "🌙 Notte";
+                eventBadge.classList.add('nightlife-badge');
+            } else if (type === 'apartments') {
+                eventBadge.textContent = "🏨 Alloggi";
+                eventBadge.classList.add('apartments-badge');
+            }
         }
 
         // Activate overlay first to layout iframe/video elements correctly
-        eventModal.classList.add('active');
+        if (eventModal) eventModal.classList.add('active');
 
         // Dynamically load the appropriate stream
         const videoSrc = data[type + 'Video'];
@@ -332,9 +344,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeSubModal = () => {
-        eventModal.classList.remove('active');
-        eventVideo.pause();
-        eventVideo.src = ""; // Clear video stream
+        if (eventModal) eventModal.classList.remove('active');
+        if (eventVideo) {
+            eventVideo.pause();
+            eventVideo.src = ""; // Clear video stream
+        }
         if (eventIframe) eventIframe.src = ""; // Clear iframe stream
     };
 
@@ -375,19 +389,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const desc = previewBtn.getAttribute('data-desc');
             const badge = previewBtn.getAttribute('data-badge');
             
-            if (eventTitle && eventDescription && eventBadge && eventVideo && eventModal) {
-                // Populate dynamic content
-                eventTitle.textContent = title;
-                eventDescription.textContent = desc;
-                eventBadge.textContent = badge;
-                eventBadge.className = "event-badge"; // reset classes
-                
-                if (badge.includes("Explorer")) {
-                    eventBadge.classList.add('daylife-badge');
-                } else if (badge.includes("Vibe")) {
-                    eventBadge.classList.add('nightlife-badge');
-                } else if (badge.includes("Club")) {
-                    eventBadge.classList.add('apartments-badge');
+            if (eventModal) {
+                // Populate dynamic content safely
+                if (eventTitle) eventTitle.textContent = title;
+                if (eventDescription) eventDescription.textContent = desc;
+                if (eventBadge) {
+                    eventBadge.textContent = badge;
+                    eventBadge.className = "event-badge"; // reset classes
+                    
+                    if (badge.includes("Explorer")) {
+                        eventBadge.classList.add('daylife-badge');
+                    } else if (badge.includes("Vibe")) {
+                        eventBadge.classList.add('nightlife-badge');
+                    } else if (badge.includes("Club")) {
+                        eventBadge.classList.add('apartments-badge');
+                    }
                 }
                 
                 eventModal.classList.add('active');
